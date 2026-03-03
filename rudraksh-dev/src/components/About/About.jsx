@@ -167,8 +167,7 @@ function About() {
                         color="#7df9ff"
                         speed={0.6}
                         chaos={0.08}
-                        thickness={1.5}
-                        style={{ borderRadius: 16 }}
+                        borderRadius={16}
                     >
                         <div
                             className={styles.card}
@@ -210,8 +209,7 @@ function About() {
                         color="#7df9ff"
                         speed={0.6}
                         chaos={0.08}
-                        thickness={1.5}
-                        style={{ borderRadius: 16 }}
+                        borderRadius={16}
                     >
                         <div
                             className={styles.timelineCard}

@@ -1,10 +1,10 @@
 /* ═══════════════════════════════════════════════
-   ELECTRIC BORDER — CSS Module
-   Layered glow system (glow-1, glow-2, background-glow)
-   Uses oklch() relative color syntax for glow derivation
+   ELECTRIC BORDER — Styles
+   Credit: @BalintFerenczy on X
+   https://codepen.io/BalintFerenczy/pen/KwdoyEN
    ═══════════════════════════════════════════════ */
 
-.electricBorder {
+.electric-border {
   --electric-light-color: oklch(from var(--electric-border-color) l c h);
   position: relative;
   border-radius: inherit;
@@ -12,8 +12,7 @@
   isolation: isolate;
 }
 
-/* ── Canvas container — centered over the card ── */
-.canvasContainer {
+.eb-canvas-container {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -22,19 +21,17 @@
   z-index: 2;
 }
 
-.canvas {
+.eb-canvas {
   display: block;
 }
 
-/* ── Children wrapper — sits above glow layers ── */
-.content {
+.eb-content {
   position: relative;
   border-radius: inherit;
   z-index: 1;
 }
 
-/* ── Glow layers container ── */
-.layers {
+.eb-layers {
   position: absolute;
   inset: 0;
   border-radius: inherit;
@@ -42,10 +39,9 @@
   z-index: 0;
 }
 
-/* ── Shared glow base ── */
-.glow1,
-.glow2,
-.backgroundGlow {
+.eb-glow-1,
+.eb-glow-2,
+.eb-background-glow {
   position: absolute;
   inset: 0;
   border-radius: inherit;
@@ -53,20 +49,17 @@
   box-sizing: border-box;
 }
 
-/* ── Inner glow — sharp, tight border ── */
-.glow1 {
+.eb-glow-1 {
   border: 2px solid oklch(from var(--electric-border-color) l c h / 0.6);
   filter: blur(1px);
 }
 
-/* ── Outer glow — softer, wider spread ── */
-.glow2 {
+.eb-glow-2 {
   border: 2px solid var(--electric-light-color);
   filter: blur(4px);
 }
 
-/* ── Background glow — ambient diffuse halo ── */
-.backgroundGlow {
+.eb-background-glow {
   z-index: -1;
   transform: scale(1.1);
   filter: blur(32px);
