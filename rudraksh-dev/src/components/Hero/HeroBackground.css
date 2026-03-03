@@ -1,0 +1,178 @@
+/* ═══════════════════════════════════════════════════════
+   HERO BACKGROUND — Animated layers
+   GPU-only transforms, no layout-affecting properties.
+   All animated elements use will-change: transform.
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Root container ── */
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* ═══════════════════════════════════════
+   1. ANIMATED GRID
+   Uses transform (translateX/Y) instead of backgroundPosition
+   for GPU-composited animation. Grid element is 200% sized
+   so translation never reveals empty space.
+   ═══════════════════════════════════════ */
+.heroGrid {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  mask-image: radial-gradient(ellipse at center, transparent 30%, black);
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    transparent 30%,
+    black
+  );
+}
+
+.heroGridLines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background-image: repeating-linear-gradient(
+    100deg,
+    rgba(100, 116, 139, 0.15) 0%,
+    rgba(100, 116, 139, 0.15) 1px,
+    transparent 1px,
+    transparent 4%
+  );
+  opacity: 0.18;
+  will-change: transform;
+}
+
+/* ═══════════════════════════════════════
+   2. CONCENTRIC CIRCLES
+   Only rotated via transform — no scale,
+   no opacity, no layout-affecting props.
+   Centered via margin: auto + inset: 0
+   so transform is free for rotate animation.
+   ═══════════════════════════════════════ */
+.circlesContainer {
+  position: absolute;
+  inset: 0;
+}
+
+.circle {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  will-change: transform;
+}
+
+/* Circle 0 — innermost, cyan/teal accent */
+.circle0 {
+  width: 480px;
+  height: 480px;
+  border-color: rgba(45, 212, 191, 0.5);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(45, 212, 191, 0.08) 0%,
+    transparent 70%
+  );
+}
+
+/* Circle 1 — mid ring, lighter cyan */
+.circle1 {
+  width: 560px;
+  height: 560px;
+  border-color: rgba(34, 211, 238, 0.3);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(34, 211, 238, 0.05) 0%,
+    transparent 70%
+  );
+}
+
+/* Circle 2 — outermost, subtle slate */
+.circle2 {
+  width: 640px;
+  height: 640px;
+  border-color: rgba(100, 116, 139, 0.18);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(100, 116, 139, 0.03) 0%,
+    transparent 70%
+  );
+}
+
+/* ═══════════════════════════════════════
+   3. GRADIENT GLOW (static — no animation)
+   ═══════════════════════════════════════ */
+.glowContainer {
+  position: absolute;
+  inset: 0;
+  mask-image: radial-gradient(90% 60% at 50% 50%, #000 40%, transparent);
+  -webkit-mask-image: radial-gradient(
+    90% 60% at 50% 50%,
+    #000 40%,
+    transparent
+  );
+}
+
+.glowTeal {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(15, 118, 110, 0.25) 0%,
+    transparent 70%
+  );
+  filter: blur(120px);
+}
+
+.glowCyan {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(45, 212, 191, 0.12) 0%,
+    transparent 60%
+  );
+  filter: blur(80px);
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — ≤ 768px
+   Reduce circle sizes and glow intensity
+   for mobile performance.
+   ═══════════════════════════════════════ */
+@media (max-width: 768px) {
+  .circle {
+    border-width: 1px;
+  }
+
+  .circle0 {
+    width: 260px;
+    height: 260px;
+  }
+
+  .circle1 {
+    width: 320px;
+    height: 320px;
+  }
+
+  .circle2 {
+    width: 380px;
+    height: 380px;
+  }
+
+  .glowTeal {
+    filter: blur(80px);
+    opacity: 0.7;
+  }
+
+  .glowCyan {
+    filter: blur(60px);
+    opacity: 0.6;
+  }
+}
