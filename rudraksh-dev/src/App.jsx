@@ -1,10 +1,11 @@
 import Navbar from "./components/Navbar/Navbar";
+import Hero from "./components/Hero/Hero";
 
 function App() {
   return (
     <div>
       <Navbar />
-      <h1>System initializing...</h1>
+      <Hero />
     </div>
   );
 }
