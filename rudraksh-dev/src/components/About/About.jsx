@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import styles from "./About.module.css";
-import ElectricBorder from "./ElectricBorder";
+import ElectricSpotlightCard from "./ElectricSpotlightCard";
 
 /* ═══════════════════════════════════════════════════════
    DATA — cards & timeline kept at module level
@@ -162,7 +162,7 @@ function About() {
 
             <div className={styles.cardsGrid}>
                 {SKILLS.map((skill, i) => (
-                    <ElectricBorder
+                    <ElectricSpotlightCard
                         key={skill.title}
                         color="#7df9ff"
                         speed={0.6}
@@ -185,7 +185,7 @@ function About() {
                                 ))}
                             </div>
                         </div>
-                    </ElectricBorder>
+                    </ElectricSpotlightCard>
                 ))}
             </div>
 
@@ -204,7 +204,7 @@ function About() {
 
             <div className={styles.timeline}>
                 {TIMELINE.map((item, i) => (
-                    <ElectricBorder
+                    <ElectricSpotlightCard
                         key={item.year}
                         color="#7df9ff"
                         speed={0.6}
@@ -223,7 +223,7 @@ function About() {
                             <p className={styles.timelineSubtitle}>{item.subtitle}</p>
                             <p className={styles.timelineDesc}>{item.description}</p>
                         </div>
-                    </ElectricBorder>
+                    </ElectricSpotlightCard>
                 ))}
             </div>
         </section>

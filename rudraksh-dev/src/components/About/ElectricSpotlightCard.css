@@ -1,0 +1,29 @@
+/* ═══════════════════════════════════════════════════════
+   ELECTRIC SPOTLIGHT CARD — visibility control
+   ═══════════════════════════════════════════════════════
+   By default the electric border layers (canvas + glow)
+   are hidden.  They fade in when the wrapper gets the
+   .electric-spotlight-active class (set on hover).
+   On mobile the layers stay permanently hidden.
+   ═══════════════════════════════════════════════════════ */
+
+/* Hide electric layers by default */
+.electric-spotlight-wrapper .eb-canvas-container,
+.electric-spotlight-wrapper .eb-layers {
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+}
+
+/* Show electric layers on hover (desktop only) */
+.electric-spotlight-active .eb-canvas-container,
+.electric-spotlight-active .eb-layers {
+    opacity: 1;
+}
+
+/* Mobile — always hide electric layers */
+.electric-spotlight-mobile .eb-canvas-container,
+.electric-spotlight-mobile .eb-layers {
+    opacity: 0 !important;
+    display: none;
+}
