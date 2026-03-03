@@ -1,0 +1,321 @@
+/* ═══════════════════════════════════════════════
+   PREMIUM NAVBAR — CSS Modules
+   Uses only existing CSS variables from variable.css
+   ═══════════════════════════════════════════════ */
+
+/* ── Header container ── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  /* glassmorphism — transparent at rest */
+  background: rgba(10, 10, 10, 0.45);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--color-border-subtle);
+
+  /* fade-in on load — start state */
+  opacity: 0;
+  transform: translateY(-14px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    background var(--transition-smooth),
+    box-shadow var(--transition-smooth);
+}
+
+.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* scroll state — solid + shadow */
+.scrolled {
+  background: rgba(10, 10, 10, 0.92);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.24),
+    0 4px 24px rgba(0, 0, 0, 0.28);
+  border-bottom-color: transparent;
+}
+
+/* ── Inner wrapper ── */
+.inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ── Logo ── */
+.logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: opacity var(--transition-smooth);
+  flex-shrink: 0;
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+.logoDot {
+  color: var(--color-accent);
+}
+
+/* ── Desktop nav ── */
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.navLink {
+  position: relative;
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  padding: 4px 0;
+  transition: color var(--transition-smooth);
+}
+
+.navLink:hover {
+  color: var(--color-text-primary);
+}
+
+/* animated underline */
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-accent);
+  border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navLink:hover::after {
+  transform: scaleX(1);
+}
+
+/* active state */
+.navLink.active {
+  color: var(--color-text-primary);
+}
+
+.navLink.active::after {
+  transform: scaleX(1);
+}
+
+/* ── CTA buttons ── */
+.cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.ctaLogin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 20px;
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    color var(--transition-smooth),
+    background var(--transition-smooth),
+    border-color var(--transition-smooth);
+}
+
+.ctaLogin:hover {
+  color: var(--color-text-primary);
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
+}
+
+.ctaSignup {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 20px;
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  color: #fff;
+  background: var(--color-accent);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    filter var(--transition-smooth),
+    box-shadow var(--transition-smooth);
+}
+
+.ctaSignup:hover {
+  filter: brightness(1.12);
+  box-shadow: 0 0 16px rgba(59, 130, 246, 0.35);
+}
+
+/* ── Hamburger (mobile only) ── */
+.hamburger {
+  display: none; /* hidden on desktop */
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1100;
+}
+
+.bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-text-primary);
+  border-radius: 2px;
+  transition:
+    transform var(--transition-smooth),
+    opacity var(--transition-smooth);
+  transform-origin: center;
+}
+
+/* hamburger → ✕ animation */
+.open .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.open .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile overlay ── */
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100vh;
+  height: 100dvh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 40px 40px;
+
+  background: rgba(10, 10, 10, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-left: 1px solid var(--color-border-subtle);
+
+  transform: translateX(100%);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1050;
+
+  /* hidden from a11y tree when closed */
+  visibility: hidden;
+}
+
+.overlayOpen {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+/* ── Mobile nav links ── */
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobileLink {
+  display: block;
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  font-size: 1.35rem;
+  font-weight: 500;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+
+  /* stagger fade-in (delay set inline) */
+  opacity: 0;
+  transform: translateX(20px);
+  transition:
+    color var(--transition-smooth),
+    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.overlayOpen .mobileLink {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.mobileLink:hover {
+  color: var(--color-text-primary);
+}
+
+/* ── Mobile CTA ── */
+.mobileCta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 32px;
+}
+
+.mobileCta .ctaLogin,
+.mobileCta .ctaSignup {
+  width: 100%;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 1rem;
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — ≤ 768 px
+   ═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .inner {
+    padding: 0 20px;
+    height: 56px;
+  }
+
+  .desktopNav,
+  .cta {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}

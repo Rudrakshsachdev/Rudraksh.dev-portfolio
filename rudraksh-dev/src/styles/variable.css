@@ -1,0 +1,42 @@
+:root {
+  /* ===== COLORS ===== */
+
+  --color-bg-primary: #0a0a0a;
+  --color-bg-secondary: #111111;
+  --color-surface: #161616;
+
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #6b7280;
+
+  --color-accent: #3b82f6;
+  --color-accent-soft: rgba(59, 130, 246, 0.15);
+
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-grid-line: rgba(255, 255, 255, 0.05);
+
+  /* ===== TYPOGRAPHY SCALE ===== */
+
+  --font-size-hero: clamp(3rem, 6vw, 6rem);
+  --font-size-heading: clamp(2rem, 4vw, 3rem);
+  --font-size-subheading: 1.25rem;
+  --font-size-body: 1rem;
+  --font-size-small: 0.875rem;
+
+  /* ===== SPACING SYSTEM ===== */
+
+  --space-section: 120px;
+  --space-container: 80px;
+  --space-element: 24px;
+
+  /* ===== RADIUS ===== */
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  /* ===== TRANSITIONS ===== */
+
+  --transition-smooth: 0.3s ease;
+  --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
