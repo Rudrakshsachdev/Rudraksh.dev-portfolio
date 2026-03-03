@@ -1,11 +1,13 @@
 import styles from "./Hero.module.css";
 import Cube3D from "./Cube3D";
-import HeroBackground from "./HeroBackground";
+//import HeroBackground from "./HeroBackground";
+import HeroLiquidBackground from "./HeroLiquidBackground";
 
 function Hero() {
   return (
     <section className={styles.hero}>
-      <HeroBackground />
+      <HeroLiquidBackground />
+
       <div className={styles.container}>
         {/* ── Left column — copy + CTA ── */}
         <div className={styles.left}>
