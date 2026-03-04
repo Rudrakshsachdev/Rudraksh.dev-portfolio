@@ -148,6 +148,8 @@ function useScrollReveal() {
     return setRef;
 }
 
+import LightRays from "../LightRays/LightRays";
+
 /* ═══════════════════════════════════════════════════════
    Portfolio — main component
    ═══════════════════════════════════════════════════════ */
@@ -156,9 +158,24 @@ function Portfolio() {
     let refIndex = 0;
 
     return (
-        <section className={styles.portfolio} id="work">
+        <section className={styles.portfolio} id="work" style={{ position: "relative" }}>
+            <LightRays
+                className={styles.raysBackground}
+                raysOrigin="top-center"
+                raysColor="#ffffff" /* bright white for maximum visibility */
+                raysSpeed={0.8}
+                lightSpread={1.5}
+                rayLength={2.5}
+                pulsating={true}
+                fadeDistance={1.0}
+                noiseAmount={0.02}
+                distortion={0.05}
+                followMouse={true}
+                mouseInfluence={0.5}
+            />
+
             {/* ── Section Header ── */}
-            <div className={styles.sectionHeader} ref={setRef(refIndex++)}>
+            <div className={styles.sectionHeader} ref={setRef(refIndex++)} style={{ zIndex: 1 }}>
                 <span className={styles.label}>
                     <span className={styles.dot} />
                     PROJECTS
