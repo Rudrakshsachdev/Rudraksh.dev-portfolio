@@ -39,10 +39,10 @@ const PROJECTS = [
         role: "Developed an AI-powered resume analysis platform during my first year as part of my first internship project submission, implementing NLP-based resume parsing, candidate scoring algorithms, and AI-driven feedback for resume optimization and job matching.",
         impact:
             "Successfully launched the platform, enabling users to plan and book trips seamlessly through a unified interface. The admin dashboard streamlined travel agency operations, improving efficiency and customer experience.",
-        tech: ["Python", "Django", "NLP", "spaCy","Google Gemini", "Named Entity Recognition(NER)", "Bootstrap", "EmailGrid API"],
+        tech: ["Python", "Django", "NLP", "spaCy", "Google Gemini", "Named Entity Recognition(NER)", "Bootstrap", "EmailGrid API"],
         liveUrl: "#",
         githubUrl: "#",
-        featured: true,
+        featured: false,
         gradient:
             "linear-gradient(135deg, #0d1117 0%, #161b22 40%, #1f2937 100%)",
     },
@@ -60,7 +60,7 @@ const PROJECTS = [
             "Secured 2nd place in the “AI/ML for Public Good” category at the SUSTAINATHON 2025, one of India's largest hackathons. The platform was recognized for its innovative approach to public safety and potential impact on women’s security. The project was also selected for presentation at the State-Level Hackathon 2025, further validating its technical merit and societal relevance.",
         tech: ["Computer Vision", "Deep Learning", "AI Survelliance System", "Violence Detection", "Geolocation Tracking", "Risk Scoring System", "Emergency Response System", "Safe Route Recommendations", "CNN/LSTM", "GeoSpatial Analytics", "Django"],
         githubUrl: "#",
-        featured: true,
+        featured: false,
         gradient:
             "linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 40%, #1e1145 100%)",
     },
@@ -77,7 +77,7 @@ const PROJECTS = [
         tech: ["Python", "Django", "AI / ML", "IOT", "Computer Vision", "Deep Learning", "Smart Traffic Signal Control", "Ambulance Priority System", "Emergency Response System", "Risk Scoring System", "GeoSpatial Analytics", "Cloud Integration", "GPS Integration", "CNN", "Smart Traffic System"],
         liveUrl: "#",
         githubUrl: "#",
-        featured: true,
+        featured: false,
         gradient:
             "linear-gradient(135deg, #0a192f 0%, #112240 40%, #1d3557 100%)",
     },
@@ -93,7 +93,7 @@ const PROJECTS = [
         impact: "Provides a centralized digital platform for managing faculty profiles and research submissions, improving transparency, streamlining the review process, and reducing manual administrative work within the university.",
         tech: ["Python", "Django", "Bootstrap", "Cloudinary", "PostgreSQL", "EmailGrid API", "Docker", "JWT", "OAuth2", "Rate Limiting", "Role Based Access Control", "File Storage", "Scalable Deployment", "Modern University Administration", "Secure Authentication", "Modern University Administration"],
         githubUrl: "#",
-        featured: true,
+        featured: false,
         gradient:
             "linear-gradient(135deg, #1b1b2f 0%, #1a1a3e 40%, #252550 100%)",
     },
@@ -109,7 +109,7 @@ const PROJECTS = [
         tech: ["Python", "AI Systems", "IOT", "Embedded Systems", "Sensor Integration", "Robotics", "Fire Detection System", "Remote Monitoring", "Automated Fire Detection", "Safety Improvement"],
         liveUrl: "#",
         githubUrl: "#",
-        featured: true,
+        featured: false,
         gradient:
             "linear-gradient(135deg, #1b1b2f 0%, #1a1a3e 40%, #252550 100%)",
     }

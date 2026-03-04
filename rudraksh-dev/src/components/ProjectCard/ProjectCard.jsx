@@ -35,8 +35,8 @@ function ProjectCard({
 
                 <p className={styles.description}>{description}</p>
 
-                {/* Info section — only shown for featured cards */}
-                {featured && (problem || role || impact) && (
+                {/* Info section */}
+                {(problem || role || impact) && (
                     <div className={styles.info}>
                         {problem && (
                             <div className={styles.infoRow}>

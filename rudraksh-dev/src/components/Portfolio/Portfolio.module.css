@@ -80,14 +80,15 @@
    ═══════════════════════════════════════════════ */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
 }
 
 .gridItem {
   min-width: 0; /* prevent grid blowout */
 }
 
+/* Full width feature card */
 .gridItemFeatured {
   grid-column: span 2;
 }
