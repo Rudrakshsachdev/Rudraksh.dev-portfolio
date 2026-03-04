@@ -25,14 +25,13 @@ function Hero() {
           <p className={styles.badge}>AI Systems Engineer</p>
 
           <h1 className={styles.heading}>
-            I engineer intelligent systems
+            I Engineer Intelligent Systems
             <br />
-            that scale.
+            That Scale.
           </h1>
 
           <p className={styles.subtext}>
-            Building production-grade AI applications, scalable backend
-            architectures, and performance-driven frontend systems.
+            Building production-grade AI systems, scalable backend architectures, and high-performance frontend experiences.
           </p>
 
           <div className={styles.actions}>
