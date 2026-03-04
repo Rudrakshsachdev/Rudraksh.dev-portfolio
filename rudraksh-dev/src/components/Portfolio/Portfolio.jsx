@@ -97,6 +97,22 @@ const PROJECTS = [
         gradient:
             "linear-gradient(135deg, #1b1b2f 0%, #1a1a3e 40%, #252550 100%)",
     },
+    {
+        icon: "📡",
+        category: "AI / ML / IOT",
+        title: "AI & IoT-Based Firefighter Rover",
+        description: "An intelligent fire detection and firefighting rover designed using AI and IoT technologies to detect flames and hazardous environments in real time. The rover is equipped with sensors and a camera system to monitor fire conditions and can assist in early fire detection and emergency response, helping reduce risks in dangerous environments. The project focuses on improving safety by enabling remote monitoring and automated fire detection.",
+        duration: "2 months",
+        problem: "Fires in hazardous or inaccessible areas pose serious risks to human firefighters. Traditional fire response methods often require manual intervention, which can delay detection and increase danger. There is a need for an intelligent system that can detect fires early and operate in risky environments without putting human lives at risk.",
+        role: "Developed the AI and IoT-based firefighter rover as the core developer, designing and implementing the system for fire detection, sensor integration, and remote monitoring. The project was assigned by Dr. Puja Acharya, and involved building the rover’s hardware integration, control logic, and intelligent monitoring capabilities.",
+        impact: "Helps improve fire safety by enabling early fire detection and remote monitoring in hazardous environments, reducing risks for firefighters and improving emergency response.",
+        tech: ["Python", "AI Systems", "IOT", "Embedded Systems", "Sensor Integration", "Robotics", "Fire Detection System", "Remote Monitoring", "Automated Fire Detection", "Safety Improvement"],
+        liveUrl: "#",
+        githubUrl: "#",
+        featured: true,
+        gradient:
+            "linear-gradient(135deg, #1b1b2f 0%, #1a1a3e 40%, #252550 100%)",
+    }
 ];
 
 /* ═══════════════════════════════════════════════════════
