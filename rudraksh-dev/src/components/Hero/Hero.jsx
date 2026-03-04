@@ -1,10 +1,23 @@
 import styles from "./Hero.module.css";
 import CubeScene from "../3d/CubeScene";
+import RippleGrid from "./RippleGrid";
 
 function Hero() {
   return (
     <section className={styles.hero}>
-      {/* <HeroLiquidBackground /> */}
+      {/* ── Ripple grid background — absolute layer behind everything ── */}
+      <RippleGrid
+        gridColor="#3b82f6"
+        rippleIntensity={0.04}
+        gridSize={12.0}
+        gridThickness={18.0}
+        fadeDistance={1.8}
+        vignetteStrength={2.5}
+        glowIntensity={0.08}
+        opacity={0.6}
+        mouseInteraction
+        mouseInteractionRadius={1.2}
+      />
 
       <div className={styles.container}>
         {/* ── Left column — copy + CTA ── */}
