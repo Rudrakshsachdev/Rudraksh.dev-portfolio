@@ -30,13 +30,19 @@ const PROJECTS = [
     {
         icon: "🤖",
         category: "AI / ML",
-        title: "AI-Powered Resume Analyzer",
+        title: "NeuroParse – AI-Powered Resume Analysis and Optimization Platform",
         description:
-            "NLP-based resume parsing and scoring system that evaluates candidate profiles against job descriptions using ML models.",
+            "An AI-powered Django application that parses PDF/DOCX resumes using NLP and regex techniques, extracts candidate information, evaluates profiles through a structured scoring algorithm, and provides AI-driven resume optimization, job matching, and intelligent feedback.",
         duration: "3 months",
-        tech: ["Python", "Flask", "TensorFlow", "spaCy", "React"],
+        problem:
+            "Resume parsing is a time-consuming and error-prone process that requires manual extraction of information from resumes. This can lead to delays in the hiring process and may result in missed opportunities for both candidates and employers.",
+        role: "Developed the product end-to-end as a freelance developer, including system architecture implementation, AI chatbot integration, and payment workflow development.",
+        impact:
+            "Successfully launched the platform, enabling users to plan and book trips seamlessly through a unified interface. The admin dashboard streamlined travel agency operations, improving efficiency and customer experience.",
+        tech: ["Python", "Django", "NLP", "spaCy","Google Gemini", "Named Entity Recognition(NER)", "Bootstrap", "EmailGrid API"],
         liveUrl: "#",
         githubUrl: "#",
+        featured: true,
         gradient:
             "linear-gradient(135deg, #0d1117 0%, #161b22 40%, #1f2937 100%)",
     },
