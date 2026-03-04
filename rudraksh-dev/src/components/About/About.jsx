@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import styles from "./About.module.css";
 import ElectricSpotlightCard from "./ElectricSpotlightCard";
 import ShaderAnimation from "./ShaderAnimation";
+import { GridScan } from "./GridScan";
 
 /* ═══════════════════════════════════════════════════════
    DATA — cards & timeline kept at module level
@@ -12,49 +13,49 @@ const SKILLS = [
   {
     icon: "⚙️",
     title: "AI / ML Engineering",
-    pills: ["Python", "TensorFlow", "PyTorch", "LangChain", "OpenAI"],
+    pills: ["Python", "TensorFlow", "PyTorch", "OpenAI", "Prompt Engineering"],
   },
   {
     icon: "🖥️",
     title: "Frontend Systems",
-    pills: ["React", "Next.js", "Three.js", "Framer Motion", "CSS"],
+    pills: ["React", "Three.js", "Framer Motion", "CSS", "Tailwind CSS", "TypeScript",],
   },
   {
     icon: "🛠️",
     title: "Backend & Infra",
-    pills: ["Node.js", "Express", "PostgreSQL", "MongoDB", "Docker"],
+    pills: ["Node.js", "Express", "PostgreSQL", "Django", "Flask", "Supabase"],
   },
   {
     icon: "📐",
     title: "System Design",
-    pills: ["Microservices", "REST", "GraphQL", "CI/CD", "AWS"],
+    pills: ["Microservices", "REST", "GraphQL", "CI/CD", "AWS", "Azure"],
   },
 ];
 
 const TIMELINE = [
   {
     year: "2024",
-    icon: "🚀",
-    role: "AI Systems Engineer",
-    subtitle: "Freelance & Open Source",
-    description:
-      "Building production-grade AI applications and scalable full-stack architectures for startups and enterprises.",
-  },
-  {
-    year: "2023",
     icon: "🎓",
-    role: "Computer Science",
-    subtitle: "University",
+    role: "Computer Science Undergrad",
+    subtitle: "IILM University, Gurugram",
     description:
-      "Deep-diving into machine learning, distributed systems, and software architecture principles.",
+      "Pursuing Computer Science with a strong focus on AI systems, scalable architectures, and practical software engineering.",
   },
   {
-    year: "2022",
-    icon: "💡",
-    role: "Full-Stack Developer",
-    subtitle: "Projects & Internships",
+    year: "2025",
+    icon: "🚀",
+    role: "Python Developer Intern",
+    subtitle: "Internship – ELEVATE LABS",
     description:
-      "Shipping end-to-end web applications with a focus on performance, accessibility, and clean code.",
+      "Worked on backend automation tasks using Python, building efficient scripts, integrating APIs, and optimizing workflows through effective use of data structures and algorithms. Collaborated with developers to maintain code quality, follow best engineering practices, and manage repositories using Git-based version control.",
+  },
+  {
+    year: "2025",
+    icon: "💡",
+    role: "Contributor – GirlScript Summer of Code (GSSoC)",
+    subtitle: "Contributor – GirlScript Summer of Code (GSSoC)",
+    description:
+      "Contributed to open-source projects as part of GirlScript Summer of Code (GSSoC) 2025."
   },
 ];
 
@@ -101,136 +102,175 @@ function About() {
   let refIndex = 0;
 
   return (
-    <section className={styles.about} id="about">
-      {/* ── 1. Section Header ── */}
-      <div className={styles.sectionHeader} ref={setRef(refIndex++)}>
-        <span className={styles.label}>
-          <span className={styles.dot} />
-          ABOUT
-          <span className={styles.dot} />
-        </span>
-        <h2 className={styles.sectionHeading}>The Short Version</h2>
+    <section className={styles.aboutSection} id="about">
+      {/* ── GridScan Background ── */}
+      <div className={styles.gridScanBg}>
+        <GridScan
+          enableWebcam={false}
+          showPreview={false}
+          scanOnClick
+          lineThickness={1}
+          linesColor="#392e4e"
+          scanColor="#FF9FFC"
+          scanOpacity={0.4}
+          gridScale={0.1}
+          lineStyle="solid"
+          lineJitter={0.1}
+          scanDirection="pingpong"
+          scanGlow={0.5}
+          scanSoftness={2}
+          scanPhaseTaper={0.9}
+          scanDuration={2.0}
+          scanDelay={2.0}
+          noiseIntensity={0.01}
+          enablePost={false}
+          bloomIntensity={0}
+          chromaticAberration={0.002}
+        />
       </div>
 
-      {/* ── 2. Description Block ── */}
-      <div className={styles.descriptionBlock} ref={setRef(refIndex++)}>
-        <p className={styles.descParagraph}>
-          I specialize in building{" "}
-          <span className={styles.highlight}>production-grade AI systems</span>{" "}
-          and scalable full-stack architectures. My work focuses on{" "}
-          <span className={styles.highlight}>performance</span>,{" "}
-          <span className={styles.highlight}>maintainability</span>, and
-          structured engineering principles.
-        </p>
-
-        <p className={styles.descParagraph}>
-          From{" "}
-          <span className={styles.highlight}>machine learning pipelines</span>{" "}
-          to responsive frontend systems, I approach every project with
-          system-level thinking and a strong emphasis on{" "}
-          <span className={styles.highlight}>clean architecture</span>.
-        </p>
-
-        <p className={styles.descStatement}>
-          I don't just write code — I design systems.
-        </p>
-      </div>
-
-      {/* ── 3. CTA Links ── */}
-      <div className={styles.ctaLinks} ref={setRef(refIndex++)}>
-        <a href="#work" className={styles.ctaLink}>
-          View my work
-          <span className={styles.arrow}>→</span>
-        </a>
-        <a href="#contact" className={styles.ctaLink}>
-          Get in touch
-          <span className={styles.arrow}>→</span>
-        </a>
-      </div>
-
-      {/* ── Soft divider ── */}
-      <div className={styles.divider} />
-
-      {/* ── Shader Animation Showcase ── */}
-      <div className="shaderShowcase" ref={setRef(refIndex++)}>
-        <ShaderAnimation />
-        <div className="shaderOverlay">
-          <span className="shaderOverlayText">Building the Future</span>
+      <div className={styles.about}>
+        {/* ── 1. Section Header ── */}
+        <div className={styles.sectionHeader} ref={setRef(refIndex++)}>
+          <span className={styles.label}>
+            <span className={styles.dot} />
+            ABOUT
+            <span className={styles.dot} />
+          </span>
+          <h2 className={styles.sectionHeading}>The Short Version</h2>
         </div>
-      </div>
 
-      {/* ── Soft divider ── */}
-      <div className={styles.divider} />
+        {/* ── 2. Description Block ── */}
+        <div className={styles.descriptionBlock} ref={setRef(refIndex++)}>
+          <p className={styles.descParagraph}>
+            I’m Rudraksh, a 2nd-year B.Tech Computer Science and Engineering student focused on{" "}
+            <span className={styles.highlight}>Machine Learning</span>,{" "}
+            <span className={styles.highlight}>Artificial Intelligence</span>, and{" "}
+            <span className={styles.highlight}>Full-Stack Development</span>. I specialize in building{" "}
+            <span className={styles.highlight}>production-grade AI systems</span>{" "}
+            and scalable full-stack architectures, with a strong emphasis on performance, maintainability, and clean engineering practices.
+          </p>
 
-      {/* ── 4. What I Work With — Cards Grid ── */}
-      <div className={styles.sectionHeader} ref={setRef(refIndex++)}>
-        <span className={styles.label}>
-          <span className={styles.dot} />
-          EXPERTISE
-          <span className={styles.dot} />
-        </span>
-        <h3 className={styles.sectionSubheading}>What I Work With</h3>
-      </div>
+          <p className={styles.descParagraph}>
+            My work revolves around system-level thinking—from designing{" "}
+            <span className={styles.highlight}>machine learning pipelines</span>{" "}
+            and integrating intelligent models to developing responsive, high-performance frontend systems backed by scalable backend infrastructure.
+          </p>
 
-      <div className={styles.cardsGrid}>
-        {SKILLS.map((skill, i) => (
-          <ElectricSpotlightCard
-            key={skill.title}
-            color="#7df9ff"
-            speed={0.6}
-            chaos={0.08}
-            borderRadius={16}
-          >
-            <div className={styles.card} ref={setRef(refIndex++)}>
-              <div className={styles.cardHeader}>
-                <span className={styles.cardIcon}>{skill.icon}</span>
-                <h4 className={styles.cardTitle}>{skill.title}</h4>
+          <p className={styles.descParagraph}>
+            I have participated in 7+ national-level hackathons, consistently reaching the final rounds, and I’m also a{" "}
+            <span className={styles.highlight}>national-level hackathon winner</span>, where my team developed a high-impact technical solution evaluated among top teams across the country. These experiences strengthened my ability to analyze complex problem statements, architect scalable solutions, and deliver production-ready prototypes under tight timelines.
+          </p>
+
+          <p className={styles.descParagraph}>
+            Alongside hackathons, I have gained practical experience through industry internships and open-source contributions, working on end-to-end application development, model integration, and real-world software engineering practices.
+          </p>
+
+          <p className={styles.descParagraph}>
+            I continuously strive to deepen my expertise in AI-driven systems, backend architecture, and modern web technologies, and I’m passionate about solving challenging engineering problems while building technology that creates real-world impact.
+          </p>
+
+          <p className={styles.descStatement}>
+            I don't just write code — I design systems.
+          </p>
+        </div>
+
+        {/* ── 3. CTA Links ── */}
+        <div className={styles.ctaLinks} ref={setRef(refIndex++)}>
+          <a href="#work" className={styles.ctaLink}>
+            View my work
+            <span className={styles.arrow}>→</span>
+          </a>
+          <a href="#contact" className={styles.ctaLink}>
+            Get in touch
+            <span className={styles.arrow}>→</span>
+          </a>
+        </div>
+
+        {/* ── Soft divider ── */}
+        <div className={styles.divider} />
+
+        {/* ── Shader Animation Showcase ── */}
+        <div className="shaderShowcase" ref={setRef(refIndex++)}>
+          <ShaderAnimation />
+          <div className="shaderOverlay">
+            <span className="shaderOverlayText">Building the Future</span>
+          </div>
+        </div>
+
+        {/* ── Soft divider ── */}
+        <div className={styles.divider} />
+
+        {/* ── 4. What I Work With — Cards Grid ── */}
+        <div className={styles.sectionHeader} ref={setRef(refIndex++)}>
+          <span className={styles.label}>
+            <span className={styles.dot} />
+            EXPERTISE
+            <span className={styles.dot} />
+          </span>
+          <h3 className={styles.sectionSubheading}>What I Work With</h3>
+        </div>
+
+        <div className={styles.cardsGrid}>
+          {SKILLS.map((skill, i) => (
+            <ElectricSpotlightCard
+              key={skill.title}
+              color="#7df9ff"
+              speed={0.6}
+              chaos={0.08}
+              borderRadius={16}
+            >
+              <div className={styles.card} ref={setRef(refIndex++)}>
+                <div className={styles.cardHeader}>
+                  <span className={styles.cardIcon}>{skill.icon}</span>
+                  <h4 className={styles.cardTitle}>{skill.title}</h4>
+                </div>
+                <div className={styles.pillsWrap}>
+                  {skill.pills.map((pill) => (
+                    <span key={pill} className={styles.pill}>
+                      {pill}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div className={styles.pillsWrap}>
-                {skill.pills.map((pill) => (
-                  <span key={pill} className={styles.pill}>
-                    {pill}
-                  </span>
-                ))}
+            </ElectricSpotlightCard>
+          ))}
+        </div>
+
+        {/* ── Soft divider ── */}
+        <div className={styles.divider} />
+
+        {/* ── 5. My Journey Timeline ── */}
+        <div className={styles.sectionHeader} ref={setRef(refIndex++)}>
+          <span className={styles.label}>
+            <span className={styles.dot} />
+            JOURNEY
+            <span className={styles.dot} />
+          </span>
+          <h3 className={styles.sectionSubheading}>My Journey</h3>
+        </div>
+
+        <div className={styles.timeline}>
+          {TIMELINE.map((item, i) => (
+            <ElectricSpotlightCard
+              key={item.year}
+              color="#7df9ff"
+              speed={0.6}
+              chaos={0.08}
+              borderRadius={16}
+            >
+              <div className={styles.timelineCard} ref={setRef(refIndex++)}>
+                <div className={styles.timelineBadge}>
+                  <span className={styles.timelineIcon}>{item.icon}</span>
+                  <span className={styles.timelineYear}>{item.year}</span>
+                </div>
+                <h4 className={styles.timelineRole}>{item.role}</h4>
+                <p className={styles.timelineSubtitle}>{item.subtitle}</p>
+                <p className={styles.timelineDesc}>{item.description}</p>
               </div>
-            </div>
-          </ElectricSpotlightCard>
-        ))}
-      </div>
-
-      {/* ── Soft divider ── */}
-      <div className={styles.divider} />
-
-      {/* ── 5. My Journey Timeline ── */}
-      <div className={styles.sectionHeader} ref={setRef(refIndex++)}>
-        <span className={styles.label}>
-          <span className={styles.dot} />
-          JOURNEY
-          <span className={styles.dot} />
-        </span>
-        <h3 className={styles.sectionSubheading}>My Journey</h3>
-      </div>
-
-      <div className={styles.timeline}>
-        {TIMELINE.map((item, i) => (
-          <ElectricSpotlightCard
-            key={item.year}
-            color="#7df9ff"
-            speed={0.6}
-            chaos={0.08}
-            borderRadius={16}
-          >
-            <div className={styles.timelineCard} ref={setRef(refIndex++)}>
-              <div className={styles.timelineBadge}>
-                <span className={styles.timelineIcon}>{item.icon}</span>
-                <span className={styles.timelineYear}>{item.year}</span>
-              </div>
-              <h4 className={styles.timelineRole}>{item.role}</h4>
-              <p className={styles.timelineSubtitle}>{item.subtitle}</p>
-              <p className={styles.timelineDesc}>{item.description}</p>
-            </div>
-          </ElectricSpotlightCard>
-        ))}
+            </ElectricSpotlightCard>
+          ))}
+        </div>
       </div>
     </section>
   );

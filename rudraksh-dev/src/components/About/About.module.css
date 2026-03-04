@@ -4,8 +4,26 @@
    8 px grid system for spacing ratios
    ═══════════════════════════════════════════════ */
 
-/* ── Section container ── */
+/* ── Section wrapper (holds background + content) ── */
+.aboutSection {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ── GridScan Background ── */
+.gridScanBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* ── Section container (content above background) ── */
 .about {
+  position: relative;
+  z-index: 1;
   padding: var(--space-section) 40px;
   max-width: 1300px;
   margin: 0 auto;
