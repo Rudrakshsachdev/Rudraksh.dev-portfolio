@@ -36,7 +36,7 @@ const PROJECTS = [
         duration: "3 months",
         problem:
             "Resume parsing is a time-consuming and error-prone process that requires manual extraction of information from resumes. This can lead to delays in the hiring process and may result in missed opportunities for both candidates and employers.",
-        role: "Developed the product end-to-end as a freelance developer, including system architecture implementation, AI chatbot integration, and payment workflow development.",
+        role: "Developed an AI-powered resume analysis platform during my first year as part of my first internship project submission, implementing NLP-based resume parsing, candidate scoring algorithms, and AI-driven feedback for resume optimization and job matching.",
         impact:
             "Successfully launched the platform, enabling users to plan and book trips seamlessly through a unified interface. The admin dashboard streamlined travel agency operations, improving efficiency and customer experience.",
         tech: ["Python", "Django", "NLP", "spaCy","Google Gemini", "Named Entity Recognition(NER)", "Bootstrap", "EmailGrid API"],
@@ -48,13 +48,19 @@ const PROJECTS = [
     },
     {
         icon: "🌐",
-        category: "FULL-STACK",
-        title: "Real-Time Collaborative Whiteboard",
+        category: "AI / ML",
+        title: "TriNetra AI – Intelligent AI-Powered Safety & Violence Detection System",
         description:
-            "Multi-user drawing canvas with real-time sync, room management, and export capabilities using WebSockets.",
-        duration: "2 months",
-        tech: ["React", "Node.js", "Socket.io", "Redis", "Canvas API"],
+            "An AI-powered surveillance platform that analyzes live CCTV footage using deep learning models to detect violent behavior in real time. The system integrates computer vision, geolocation tracking, automated emergency alerts, and dynamic safe-route recommendations to create a proactive safety ecosystem designed to enhance women’s safety and public security.",
+        duration: "6 months",
+        problem:
+            "Violence against women and children remains a persistent global challenge, with limited real-time intervention capabilities. Traditional security measures often rely on reactive responses rather than proactive prevention, leaving vulnerable populations at risk.",
+        role: "Leading the core development of the TriNetra AI safety platform, including system architecture design, AI-based violence detection models, and backend infrastructure. Responsible for developing the computer vision pipeline, integrating geolocation and emergency response workflows, and presenting the project at national-level hackathons where the team secured 2nd place in the “AI/ML for Public Good” category.",
+        impact:
+            "Secured 2nd place in the “AI/ML for Public Good” category at the SUSTAINATHON 2025, one of India's largest hackathons. The platform was recognized for its innovative approach to public safety and potential impact on women’s security. The project was also selected for presentation at the State-Level Hackathon 2025, further validating its technical merit and societal relevance.",
+        tech: ["Computer Vision", "Deep Learning", "AI Survelliance System", "Violence Detection", "Geolocation Tracking", "Risk Scoring System", "Emergency Response System", "Safe Route Recommendations", "CNN/LSTM", "GeoSpatial Analytics", "Django"],
         githubUrl: "#",
+        featured: true,
         gradient:
             "linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 40%, #1e1145 100%)",
     },

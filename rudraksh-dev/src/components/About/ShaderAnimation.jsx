@@ -1,5 +1,6 @@
 import { useEffect, useRef, memo } from "react";
 import * as THREE from "three";
+import { isWebGLAvailable } from "../WebGLErrorBoundary";
 import "./ShaderAnimation.css";
 
 /* ═══════════════════════════════════════════════════════
@@ -54,80 +55,87 @@ const ShaderAnimation = memo(function ShaderAnimation() {
 
     const container = containerRef.current;
 
-    /* ── Three.js setup ── */
-    const camera = new THREE.Camera();
-    camera.position.z = 1;
+    if (!isWebGLAvailable()) return;
 
-    const scene = new THREE.Scene();
-    const geometry = new THREE.PlaneGeometry(2, 2);
+    try {
+      /* ── Three.js setup ── */
+      const camera = new THREE.Camera();
+      camera.position.z = 1;
 
-    const uniforms = {
-      time: { value: 1.0 },
-      resolution: { value: new THREE.Vector2() },
-    };
+      const scene = new THREE.Scene();
+      const geometry = new THREE.PlaneGeometry(2, 2);
 
-    const material = new THREE.ShaderMaterial({
-      uniforms,
-      vertexShader: VERTEX_SHADER,
-      fragmentShader: FRAGMENT_SHADER,
-    });
+      const uniforms = {
+        time: { value: 1.0 },
+        resolution: { value: new THREE.Vector2() },
+      };
 
-    const mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
+      const material = new THREE.ShaderMaterial({
+        uniforms,
+        vertexShader: VERTEX_SHADER,
+        fragmentShader: FRAGMENT_SHADER,
+      });
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setPixelRatio(window.devicePixelRatio);
-    container.appendChild(renderer.domElement);
+      const mesh = new THREE.Mesh(geometry, material);
+      scene.add(mesh);
 
-    /* ── Resize handler ── */
-    const onResize = () => {
-      const width = container.clientWidth;
-      const height = container.clientHeight;
-      renderer.setSize(width, height);
-      uniforms.resolution.value.x = renderer.domElement.width;
-      uniforms.resolution.value.y = renderer.domElement.height;
-    };
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      container.appendChild(renderer.domElement);
 
-    onResize();
-    window.addEventListener("resize", onResize, false);
+      /* ── Resize handler ── */
+      const onResize = () => {
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+        renderer.setSize(width, height);
+        uniforms.resolution.value.x = renderer.domElement.width;
+        uniforms.resolution.value.y = renderer.domElement.height;
+      };
 
-    /* ── Animation loop ── */
-    const animate = () => {
-      const animationId = requestAnimationFrame(animate);
-      uniforms.time.value += 0.05;
-      renderer.render(scene, camera);
+      onResize();
+      window.addEventListener("resize", onResize, false);
 
-      if (sceneRef.current) {
-        sceneRef.current.animationId = animationId;
-      }
-    };
+      /* ── Animation loop ── */
+      const animate = () => {
+        const animationId = requestAnimationFrame(animate);
+        uniforms.time.value += 0.05;
+        renderer.render(scene, camera);
 
-    sceneRef.current = {
-      camera,
-      scene,
-      renderer,
-      uniforms,
-      animationId: 0,
-    };
-
-    animate();
-
-    /* ── Cleanup ── */
-    return () => {
-      window.removeEventListener("resize", onResize);
-
-      if (sceneRef.current) {
-        cancelAnimationFrame(sceneRef.current.animationId);
-
-        if (container && sceneRef.current.renderer.domElement) {
-          container.removeChild(sceneRef.current.renderer.domElement);
+        if (sceneRef.current) {
+          sceneRef.current.animationId = animationId;
         }
+      };
 
-        sceneRef.current.renderer.dispose();
-        geometry.dispose();
-        material.dispose();
-      }
-    };
+      sceneRef.current = {
+        camera,
+        scene,
+        renderer,
+        uniforms,
+        animationId: 0,
+      };
+
+      animate();
+
+      /* ── Cleanup ── */
+      return () => {
+        window.removeEventListener("resize", onResize);
+
+        if (sceneRef.current) {
+          cancelAnimationFrame(sceneRef.current.animationId);
+
+          if (container && sceneRef.current.renderer.domElement) {
+            container.removeChild(sceneRef.current.renderer.domElement);
+          }
+
+          sceneRef.current.renderer.dispose();
+          geometry.dispose();
+          material.dispose();
+        }
+      };
+    } catch (e) {
+      console.warn("ShaderAnimation: WebGL context unavailable, skipping.", e.message);
+      return;
+    }
   }, []);
 
   return <div ref={containerRef} className="shaderContainer" />;

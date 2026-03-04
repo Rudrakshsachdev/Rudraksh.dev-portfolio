@@ -41,6 +41,14 @@ const RippleGrid = ({
     useEffect(() => {
         if (!containerRef.current) return;
 
+        // Bail out if WebGL is disabled
+        try {
+            const tc = document.createElement('canvas');
+            const tgl = tc.getContext('webgl') || tc.getContext('experimental-webgl');
+            if (!tgl) { console.warn('RippleGrid: WebGL unavailable, skipping.'); return; }
+        } catch { console.warn('RippleGrid: WebGL unavailable, skipping.'); return; }
+
+
         /* Convert hex color string to [r, g, b] float array */
         const hexToRgb = hex => {
             const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -50,11 +58,21 @@ const RippleGrid = ({
         };
 
         /* ── Create OGL renderer with transparency ── */
-        const renderer = new Renderer({
-            dpr: Math.min(window.devicePixelRatio, 2),
-            alpha: true
-        });
-        const gl = renderer.gl;
+        let renderer, gl;
+        try {
+            renderer = new Renderer({
+                dpr: Math.min(window.devicePixelRatio, 2),
+                alpha: true
+            });
+            gl = renderer.gl;
+        } catch (e) {
+            console.warn("RippleGrid: WebGL context unavailable, skipping.", e.message);
+            return;
+        }
+        if (!gl) {
+            console.warn("RippleGrid: WebGL context unavailable, skipping.");
+            return;
+        }
         gl.enable(gl.BLEND);
         gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
         gl.canvas.style.width = '100%';

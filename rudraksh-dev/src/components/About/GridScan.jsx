@@ -421,7 +421,20 @@ export const GridScan = ({
         const container = containerRef.current;
         if (!container) return;
 
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        // Bail out early if WebGL is entirely disabled
+        try {
+            const testCanvas = document.createElement('canvas');
+            const testGl = testCanvas.getContext('webgl') || testCanvas.getContext('experimental-webgl');
+            if (!testGl) { console.warn('GridScan: WebGL unavailable, skipping.'); return; }
+        } catch { console.warn('GridScan: WebGL unavailable, skipping.'); return; }
+
+        let renderer;
+        try {
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        } catch (e) {
+            console.warn("GridScan: WebGL context unavailable, skipping.", e.message);
+            return;
+        }
         rendererRef.current = renderer;
         renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
         renderer.setSize(container.clientWidth, container.clientHeight);
