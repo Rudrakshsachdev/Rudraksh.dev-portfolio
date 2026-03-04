@@ -34,7 +34,7 @@ const SKILLS = [
 
 const TIMELINE = [
   {
-    year: "2024",
+    year: "2024-2028",
     icon: "🎓",
     role: "Computer Science Undergrad",
     subtitle: "IILM University, Gurugram",
@@ -43,19 +43,35 @@ const TIMELINE = [
   },
   {
     year: "2025",
-    icon: "🚀",
-    role: "Python Developer Intern",
-    subtitle: "Internship – ELEVATE LABS",
-    description:
-      "Worked on backend automation tasks using Python, building efficient scripts, integrating APIs, and optimizing workflows through effective use of data structures and algorithms. Collaborated with developers to maintain code quality, follow best engineering practices, and manage repositories using Git-based version control.",
-  },
-  {
-    year: "2025",
     icon: "💡",
     role: "Contributor – GirlScript Summer of Code (GSSoC)",
     subtitle: "Contributor – GirlScript Summer of Code (GSSoC)",
     description:
       "Contributed to open-source projects as part of GirlScript Summer of Code (GSSoC) 2025."
+  },
+  {
+    year: "2025 - PRESENT",
+    icon: "🤖",
+    role: "Freelance Developer",
+    subtitle: "Freelance",
+    description:
+      "Building custom software solutions for clients, including web applications, automation scripts, and AI-powered tools."
+  },
+  {
+    year: "2025 - PRESENT",
+    icon: "🏛️",
+    role: "PRESIDENT - AIGNITE CLUB",
+    subtitle: "IILM University, Gurugram",
+    description:
+      "Leading the AI and Machine Learning club at IILM University, organizing events, workshops, and hackathons to promote AI education and innovation."
+  },
+  {
+    year: "2025",
+    icon: "🚀",
+    role: "Python Developer Intern",
+    subtitle: "Internship – ELEVATE LABS",
+    description:
+      "Worked on backend automation tasks using Python, building efficient scripts, integrating APIs, and optimizing workflows through effective use of data structures and algorithms. Collaborated with developers to maintain code quality, follow best engineering practices, and manage repositories using Git-based version control.",
   },
 ];
 
