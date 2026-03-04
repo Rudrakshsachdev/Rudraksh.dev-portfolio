@@ -52,7 +52,7 @@ const PROJECTS = [
         title: "TriNetra AI – Intelligent AI-Powered Safety & Violence Detection System",
         description:
             "An AI-powered surveillance platform that analyzes live CCTV footage using deep learning models to detect violent behavior in real time. The system integrates computer vision, geolocation tracking, automated emergency alerts, and dynamic safe-route recommendations to create a proactive safety ecosystem designed to enhance women’s safety and public security.",
-        duration: "6 months",
+        duration: "September 2025 – Present",
         problem:
             "Violence against women and children remains a persistent global challenge, with limited real-time intervention capabilities. Traditional security measures often rely on reactive responses rather than proactive prevention, leaving vulnerable populations at risk.",
         role: "Leading the core development of the TriNetra AI safety platform, including system architecture design, AI-based violence detection models, and backend infrastructure. Responsible for developing the computer vision pipeline, integrating geolocation and emergency response workflows, and presenting the project at national-level hackathons where the team secured 2nd place in the “AI/ML for Public Good” category.",
@@ -65,15 +65,19 @@ const PROJECTS = [
             "linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 40%, #1e1145 100%)",
     },
     {
-        icon: "📊",
-        category: "DATA ENGINEERING",
-        title: "Stock Market Sentiment Dashboard",
+        icon: "🛡️",
+        category: "AI / ML / IOT",
+        title: "AI & IoT-Based Emergency Response System",
         description:
-            "Live sentiment analysis dashboard scraping financial news and social media, powered by NLP pipelines and interactive charts.",
-        duration: "4 months",
-        tech: ["Python", "Django", "PostgreSQL", "Chart.js", "NLTK"],
+            "An intelligent transportation safety system that uses AI, IoT sensors, and computer vision to predict potential road accidents before they occur. The platform monitors road conditions, traffic patterns, driver behavior, and environmental factors in real time to generate early warnings and prevent accidents. It also enables smart traffic signal control to create green corridors for ambulances and automatically alerts authorities during emergencies. The project was developed and presented by Team Path Predictors at the national-level Hack-Tech Hackathon hosted by Thapar Institute of Engineering and Technology, where we secured 1st place.",
+        duration: "Feb 2025 – Present",
+        problem: "Road accidents are a major cause of injuries and fatalities due to factors like poor road conditions, reckless driving, traffic congestion, and delayed emergency response. Existing traffic systems mainly provide real-time updates but do not predict or prevent accidents. There is a need for an intelligent system that can analyze real-time data to predict accident risks, provide early warnings, and prioritize emergency vehicles such as ambulances to improve road safety and response time.",
+        role: "Led the project development and handled core system architecture, AI/IoT integration, and implementation of major features. Coordinated the team, managed technical decisions, and ensured the successful presentation of the project at the Hack-Tech national-level hackathon.",
+        impact: "Secured 1st place in the national-level Hack-Tech hackathon, showcasing the project's innovative approach to road safety and emergency response. The platform was recognized for its potential impact on road safety and emergency response, and was selected for presentation at the State-Level Hackathon 2025, further validating its technical merit and societal relevance.",
+        tech: ["Python", "Django", "AI / ML", "IOT", "Computer Vision", "Deep Learning", "Smart Traffic Signal Control", "Ambulance Priority System", "Emergency Response System", "Risk Scoring System", "GeoSpatial Analytics", "Cloud Integration", "GPS Integration", "CNN", "Smart Traffic System"],
         liveUrl: "#",
         githubUrl: "#",
+        featured: true,
         gradient:
             "linear-gradient(135deg, #0a192f 0%, #112240 40%, #1d3557 100%)",
     },
