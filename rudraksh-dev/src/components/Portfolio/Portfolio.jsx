@@ -82,14 +82,18 @@ const PROJECTS = [
             "linear-gradient(135deg, #0a192f 0%, #112240 40%, #1d3557 100%)",
     },
     {
-        icon: "🔒",
+        icon: "🎓",
         category: "BACKEND",
-        title: "Secure Auth Microservice",
+        title: "IILM FacultyConnect – Academic Profile & Research Management Portal",
         description:
-            "Production-grade authentication service with JWT, OAuth2, rate-limiting, and role-based access control.",
-        duration: "1 month",
-        tech: ["Node.js", "Express", "MongoDB", "Redis", "Docker"],
+            "IILM FacultyConnect is a web-based faculty management platform developed using Django that enables faculty members to manage academic profiles and submit research outputs such as journals, books, patents, and projects through structured digital forms. The system includes a role-based review workflow where submissions are evaluated by cluster heads and approved by the dean, ensuring organized and transparent academic record management. Built with Django, Bootstrap, and Cloudinary, the platform supports secure authentication, file storage, and scalable deployment for modern university administration.",
+        duration: "3 months",
+        problem: "Universities often rely on manual or scattered systems to manage faculty profiles and research submissions, making it difficult to track publications, projects, and academic records efficiently. This leads to delays in review processes and lack of a centralized platform for structured academic data management.",
+        role: "Developed the IILM FacultyConnect portal from scratch as a full-stack developer for an institutional project assigned by Dr. Anurag Jain. Designed and implemented the Django-based system, including faculty profile management, research submission modules, and role-based workflows for faculty, cluster heads, and deans.",
+        impact: "Provides a centralized digital platform for managing faculty profiles and research submissions, improving transparency, streamlining the review process, and reducing manual administrative work within the university.",
+        tech: ["Python", "Django", "Bootstrap", "Cloudinary", "PostgreSQL", "EmailGrid API", "Docker", "JWT", "OAuth2", "Rate Limiting", "Role Based Access Control", "File Storage", "Scalable Deployment", "Modern University Administration", "Secure Authentication", "Modern University Administration"],
         githubUrl: "#",
+        featured: true,
         gradient:
             "linear-gradient(135deg, #1b1b2f 0%, #1a1a3e 40%, #252550 100%)",
     },
