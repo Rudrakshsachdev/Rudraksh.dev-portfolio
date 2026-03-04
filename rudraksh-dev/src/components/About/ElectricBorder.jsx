@@ -11,6 +11,7 @@ const ElectricBorder = ({
     speed = 1,
     chaos = 0.12,
     borderRadius = 24,
+    isVisible = false,
     className,
     style
 }) => {
@@ -148,8 +149,8 @@ const ElectricBorder = ({
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
-        // Configuration
-        const octaves = 10;
+        // Configuration — reduced octaves from 10→4 for perf
+        const octaves = 4;
         const lacunarity = 1.6;
         const gain = 0.7;
         const amplitude = chaos;
@@ -163,8 +164,8 @@ const ElectricBorder = ({
             const width = rect.width + borderOffset * 2;
             const height = rect.height + borderOffset * 2;
 
-            // Use device pixel ratio for sharp rendering
-            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            // Use capped DPR for perf
+            const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
             canvas.width = width * dpr;
             canvas.height = height * dpr;
             canvas.style.width = `${width}px`;
@@ -176,15 +177,24 @@ const ElectricBorder = ({
 
         let { width, height } = updateSize();
 
+        // Track visibility so the loop can pause/resume
+        let running = isVisibleRef.current;
+
         const drawElectricBorder = currentTime => {
             if (!canvas || !ctx) return;
+
+            // Pause loop when not visible
+            if (!isVisibleRef.current) {
+                running = false;
+                return;
+            }
 
             const deltaTime = (currentTime - lastFrameTimeRef.current) / 1000;
             timeRef.current += deltaTime * speed;
             lastFrameTimeRef.current = currentTime;
 
             // Clear canvas
-            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
             ctx.setTransform(1, 0, 0, 1, 0, 0);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.scale(dpr, dpr);
@@ -203,7 +213,7 @@ const ElectricBorder = ({
             const radius = Math.min(borderRadius, maxRadius);
 
             const approximatePerimeter = 2 * (borderWidth + borderHeight) + 2 * Math.PI * radius;
-            const sampleCount = Math.floor(approximatePerimeter / 2);
+            const sampleCount = Math.floor(approximatePerimeter / 3);
 
             ctx.beginPath();
 
@@ -260,8 +270,10 @@ const ElectricBorder = ({
         });
         resizeObserver.observe(container);
 
-        // Start animation
-        animationRef.current = requestAnimationFrame(drawElectricBorder);
+        // Start animation only if visible
+        if (isVisibleRef.current) {
+            animationRef.current = requestAnimationFrame(drawElectricBorder);
+        }
 
         return () => {
             if (animationRef.current) {
@@ -270,6 +282,75 @@ const ElectricBorder = ({
             resizeObserver.disconnect();
         };
     }, [color, speed, chaos, borderRadius, octavedNoise, getRoundedRectPoint]);
+
+    // Ref to track isVisible without restarting the effect
+    const isVisibleRef = useRef(isVisible);
+
+    // Resume or pause the animation loop when visibility changes
+    useEffect(() => {
+        isVisibleRef.current = isVisible;
+        if (isVisible && canvasRef.current) {
+            lastFrameTimeRef.current = performance.now();
+            animationRef.current = requestAnimationFrame(function draw(t) {
+                if (!isVisibleRef.current) return;
+                const canvas = canvasRef.current;
+                const container = containerRef.current;
+                if (!canvas || !container) return;
+                const ctx = canvas.getContext('2d');
+                if (!ctx) return;
+
+                const deltaTime = (t - lastFrameTimeRef.current) / 1000;
+                timeRef.current += deltaTime * speed;
+                lastFrameTimeRef.current = t;
+
+                const borderOffset = 60;
+                const rect = container.getBoundingClientRect();
+                const width = rect.width + borderOffset * 2;
+                const height = rect.height + borderOffset * 2;
+
+                const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.scale(dpr, dpr);
+
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 1;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+
+                const displacement = 60;
+                const left = borderOffset;
+                const top = borderOffset;
+                const borderWidth = width - 2 * borderOffset;
+                const borderHeight = height - 2 * borderOffset;
+                const maxRadius = Math.min(borderWidth, borderHeight) / 2;
+                const radius = Math.min(borderRadius, maxRadius);
+                const approximatePerimeter = 2 * (borderWidth + borderHeight) + 2 * Math.PI * radius;
+                const sampleCount = Math.floor(approximatePerimeter / 3);
+
+                ctx.beginPath();
+                for (let i = 0; i <= sampleCount; i++) {
+                    const progress = i / sampleCount;
+                    const point = getRoundedRectPoint(progress, left, top, borderWidth, borderHeight, radius);
+                    const xN = octavedNoise(progress * 8, 4, 1.6, 0.7, chaos, 10, timeRef.current, 0, 0);
+                    const yN = octavedNoise(progress * 8, 4, 1.6, 0.7, chaos, 10, timeRef.current, 1, 0);
+                    const dx = point.x + xN * displacement;
+                    const dy = point.y + yN * displacement;
+                    if (i === 0) ctx.moveTo(dx, dy);
+                    else ctx.lineTo(dx, dy);
+                }
+                ctx.closePath();
+                ctx.stroke();
+
+                animationRef.current = requestAnimationFrame(draw);
+            });
+        }
+        return () => {
+            if (!isVisible && animationRef.current) {
+                cancelAnimationFrame(animationRef.current);
+            }
+        };
+    }, [isVisible, color, speed, chaos, borderRadius, octavedNoise, getRoundedRectPoint]);
 
     const vars = {
         '--electric-border-color': color,

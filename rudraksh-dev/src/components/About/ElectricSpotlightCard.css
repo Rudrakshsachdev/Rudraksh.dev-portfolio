@@ -3,27 +3,30 @@
    ═══════════════════════════════════════════════════════
    By default the electric border layers (canvas + glow)
    are hidden.  They fade in when the wrapper gets the
-   .electric-spotlight-active class (set on hover).
-   On mobile the layers stay permanently hidden.
+   .electric-spotlight-active class (set on hover/tap).
    ═══════════════════════════════════════════════════════ */
 
 /* Hide electric layers by default */
 .electric-spotlight-wrapper .eb-canvas-container,
 .electric-spotlight-wrapper .eb-layers {
     opacity: 0;
-    transition: opacity 0.35s ease;
+    transition: opacity 0.3s ease;
     pointer-events: none;
+    will-change: opacity;
 }
 
-/* Show electric layers on hover (desktop only) */
+/* Show electric layers when active (hover on desktop, tap on mobile) */
 .electric-spotlight-active .eb-canvas-container,
 .electric-spotlight-active .eb-layers {
     opacity: 1;
 }
 
-/* Mobile — always hide electric layers */
-.electric-spotlight-mobile .eb-canvas-container,
-.electric-spotlight-mobile .eb-layers {
+/* Mobile — show CSS-only glow layers on tap, hide canvas for perf */
+.electric-spotlight-mobile.electric-spotlight-active .eb-layers {
+    opacity: 1;
+}
+
+.electric-spotlight-mobile .eb-canvas-container {
     opacity: 0 !important;
     display: none;
 }

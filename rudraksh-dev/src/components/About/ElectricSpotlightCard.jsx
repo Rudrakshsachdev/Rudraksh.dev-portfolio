@@ -30,13 +30,9 @@ function useIsMobile(breakpoint = 768) {
 /* ═══════════════════════════════════════════════════════
    ElectricSpotlightCard
    -------------------------------------------------------
-   Always renders the SAME DOM structure:
-     ElectricBorder → SpotlightCard → children
-
-   The electric effects (canvas + glow layers) are hidden
-   via CSS opacity when not hovered, and completely hidden
-   on mobile.  This avoids unmounting/remounting children
-   which would break scroll-reveal refs and cause flicker.
+   Hover on desktop, tap on mobile.
+   Electric border animation only runs when active
+   (isVisible prop pauses the canvas RAF loop).
    ═══════════════════════════════════════════════════════ */
 const ElectricSpotlightCard = memo(function ElectricSpotlightCard({
     children,
@@ -51,21 +47,36 @@ const ElectricSpotlightCard = memo(function ElectricSpotlightCard({
     /* Pass-through */
     style,
 }) {
-    const [isHovered, setIsHovered] = useState(false);
+    const [isActive, setIsActive] = useState(false);
     const isMobile = useIsMobile();
 
     // Build CSS classes for the wrapper
     const wrapperClasses = [
         'electric-spotlight-wrapper',
-        isHovered && !isMobile ? 'electric-spotlight-active' : '',
+        isActive ? 'electric-spotlight-active' : '',
         isMobile ? 'electric-spotlight-mobile' : '',
     ].filter(Boolean).join(' ');
+
+    /* ── Desktop: hover ── */
+    const handleMouseEnter = () => { if (!isMobile) setIsActive(true); };
+    const handleMouseLeave = () => { if (!isMobile) setIsActive(false); };
+
+    /* ── Mobile: tap to toggle ── */
+    const handleTouchStart = () => { if (isMobile) setIsActive(true); };
+    const handleTouchEnd = () => {
+        if (isMobile) {
+            // Keep glowing for a moment after lifting finger
+            setTimeout(() => setIsActive(false), 1200);
+        }
+    };
 
     return (
         <div
             className={wrapperClasses}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
             style={style}
         >
             <ElectricBorder
@@ -73,6 +84,7 @@ const ElectricSpotlightCard = memo(function ElectricSpotlightCard({
                 speed={speed}
                 chaos={chaos}
                 borderRadius={borderRadius}
+                isVisible={isActive}
             >
                 <SpotlightCard
                     className={className}

@@ -10,19 +10,19 @@ import ElectricSpotlightCard from "../About/ElectricSpotlightCard";
 const PROJECTS = [
     {
         icon: "🚗",
-        category: "MOBILE APP",
-        title: "Torq — AI Emergency Vehicle Support",
+        category: "Web Application",
+        title: "Travel Professor – Smart Travel Planning Platform",
         description:
-            "On-demand roadside assistance platform connecting stranded drivers with service providers through AI matching and real-time tracking. Built as a startup, served 500+ users.",
-        duration: "6 months",
+            "Travel Professor is a full-stack travel agency platform built with React and Django (Django REST Framework). The application allows users to explore curated travel packages, submit enquiries, book trips, and share reviews, while an integrated admin dashboard enables seamless management of trips, bookings, users, and platform data.",
+        duration: "2 months",
         problem:
-            "No unified real-time platform for emergency roadside service in remote areas",
-        role: "Founded and led product development end-to-end — architecture, AI chatbot, payment flow",
+            "Planning and booking trips often requires users to navigate multiple platforms for discovering destinations, managing bookings, reading reviews, and contacting travel agencies. This fragmented experience makes trip planning inefficient and difficult to manage in a single place.",
+        role: "Developed the product end-to-end as a freelance developer, including system architecture implementation, AI chatbot integration, and payment workflow development.",
         impact:
-            "Served 500+ users · Modular microservice backend · Razorpay escrow integration",
-        tech: ["React Native", "Node.js", "Firebase", "PostgreSQL", "OpenAI API", "Razorpay"],
-        liveUrl: "#",
-        githubUrl: "#",
+            "Successfully launched the platform, enabling users to plan and book trips seamlessly through a unified interface. The admin dashboard streamlined travel agency operations, improving efficiency and customer experience.",
+        tech: ["React", "Django", "REST Framework", "PostgreSQL", "OpenAI API", "Razorpay", "JWT", "Cloudinary", "Vercel", "Render", "Resend", "Stripe", "Tailwind CSS", "Framer Motion", "EmailGrid API"],
+        liveUrl: "https://travelprofessor.vercel.app/",
+        githubUrl: "https://github.com/Rudrakshsachdev/TravelSource",
         featured: true,
         gradient:
             "linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%)",

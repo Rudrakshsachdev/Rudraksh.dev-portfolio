@@ -11,14 +11,16 @@
   border-radius: var(--radius-lg);
   background: var(--color-surface);
   overflow: hidden;
+  will-change: transform, box-shadow;
+  transform: translate3d(0, 0, 0); /* GPU layer */
   transition:
-    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 0.35s ease,
-    box-shadow 0.35s ease;
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-6px);
+  transform: translate3d(0, -6px, 0);
   border-color: rgba(59, 130, 246, 0.3);
   box-shadow:
     0 8px 32px rgba(59, 130, 246, 0.08),
