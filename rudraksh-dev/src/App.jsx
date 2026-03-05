@@ -7,6 +7,7 @@ import Leadership from "./components/Leadership/Leadership";
 import Research from "./components/Research/Research";
 import Achievements from "./components/Achievements/Achievements";
 import Journey from "./components/Journey/Journey";
+import Contact from "./components/Contact/Contact";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Research />
       <Achievements />
       <Journey />
+      <Contact />
     </>
   );
 }

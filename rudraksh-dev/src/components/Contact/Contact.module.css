@@ -1,0 +1,413 @@
+/* ═══════════════════════════════════════════════
+   CONTACT SECTION
+   ═══════════════════════════════════════════════ */
+
+/* ── Section wrapper ── */
+.contact {
+  padding: var(--space-section) 40px;
+  border-top: 1px solid var(--color-border-subtle);
+  position: relative;
+  overflow: hidden;
+  background: #060609;
+}
+
+/* ── Backgrounds ── */
+.gridBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ambientGlow {
+  position: absolute;
+  bottom: -20%;
+  right: -10%;
+  width: 60vw;
+  height: 60vh;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 50%;
+}
+
+/* ── Content container ── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+/* ═══════════════════════════════════════════════
+   SCROLL REVEAL
+   ═══════════════════════════════════════════════ */
+.sectionHeader,
+.leftCol,
+.rightCol,
+.bottomCta {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════
+   SECTION HEADER
+   ═══════════════════════════════════════════════ */
+.sectionHeader {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent);
+}
+
+.sectionHeading {
+  font-size: var(--font-size-heading);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+}
+
+.sectionSub {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════════
+   GRID (2-Column)
+   ═══════════════════════════════════════════════ */
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: stretch;
+}
+
+/* ═══════════════════════════════════════════════
+   LEFT COLUMN (Info & WhatsApp)
+   ═══════════════════════════════════════════════ */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.infoCards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.infoCard {
+  background: rgba(18, 18, 22, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.infoCard:hover {
+  transform: translateX(4px);
+  border-color: rgba(125, 249, 255, 0.15);
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.08);
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  flex-shrink: 0;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.infoCard:hover .iconWrap {
+  background: rgba(125, 249, 255, 0.15);
+  border-color: rgba(125, 249, 255, 0.3);
+  box-shadow: 0 0 15px rgba(125, 249, 255, 0.15);
+}
+
+.iconEmoji {
+  font-size: 1.4rem;
+}
+
+.infoText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.infoLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.infoValue,
+.infoValueLink {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.infoValueLink:hover,
+.infoValueLink:focus-visible {
+  color: #7df9ff;
+  outline: none;
+}
+
+/* WhatsApp Primary Button */
+.whatsappBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 18px 32px;
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.15) 0%, rgba(18, 140, 126, 0.15) 100%);
+  border: 1px solid rgba(37, 211, 102, 0.4);
+  border-radius: 16px;
+  color: #25D366; /* WhatsApp Green */
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease;
+}
+
+.whatsappBtn:hover,
+.whatsappBtn:focus-visible {
+  transform: translateY(-4px);
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.25) 0%, rgba(18, 140, 126, 0.25) 100%);
+  border-color: rgba(37, 211, 102, 0.8);
+  color: #fff;
+  box-shadow: 0 10px 40px rgba(37, 211, 102, 0.2), 0 0 20px rgba(37, 211, 102, 0.4) inset;
+  outline: none;
+}
+
+.btnIcon {
+  font-size: 1.3rem;
+}
+
+/* ═══════════════════════════════════════════════
+   RIGHT COLUMN (Form)
+   ═══════════════════════════════════════════════ */
+.form {
+  background: rgba(18, 18, 22, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Subtle top gradient inside form */
+.form::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.6), rgba(125, 249, 255, 0.8));
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formLabel {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.5px;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  font-family: inherit;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(125, 249, 255, 0.5);
+  box-shadow:
+    0 0 0 4px rgba(125, 249, 255, 0.1),
+    0 0 15px rgba(125, 249, 255, 0.15) inset;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submitBtn {
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--color-accent);
+  color: #000;
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 18px 32px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease;
+}
+
+.submitBtn:hover,
+.submitBtn:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(125, 249, 255, 0.3);
+  outline: none;
+}
+
+.btnIconRight {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.submitBtn:hover .btnIconRight,
+.submitBtn:focus-visible .btnIconRight {
+  transform: translate(3px, -3px);
+}
+
+/* ═══════════════════════════════════════════════
+   BOTTOM CTA
+   ═══════════════════════════════════════════════ */
+.bottomCta {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-top: 20px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE DESIGN
+   ═══════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .contentGrid {
+    gap: 40px;
+  }
+  .form {
+    padding: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding: 80px 20px;
+  }
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .leftCol {
+    gap: 32px;
+  }
+  .whatsappBtn {
+    padding: 16px 24px;
+    font-size: 1rem;
+  }
+  .form {
+    padding: 28px 20px;
+    border-radius: 20px;
+  }
+  .input, .textarea {
+    padding: 14px 16px;
+  }
+  .submitBtn {
+    padding: 16px 24px;
+    font-size: 1rem;
+  }
+}
