@@ -9,25 +9,24 @@ import styles from "./Research.module.css";
 const RESEARCH = [
     {
         icon: "🧠",
-        category: "AI System",
-        title: "AI-Powered Accident Prediction & Emergency Response System",
+        category: "Computer Vision & Public Safety AI",
+        title: "AI-Powered Facial Recognition System for Identifying Missing Children in Crowded Public Spaces",
         abstract:
-            "An intelligent transportation safety system using AI, IoT sensors, and computer vision to predict road accidents before they occur. Integrates smart traffic signal control for ambulance green corridors and automated authority alerts during emergencies.",
-        tags: ["Computer Vision", "IoT", "Deep Learning", "CNN", "GeoSpatial"],
+            "Proposed a facial recognition–based identification framework designed to assist in locating missing children in crowded public environments such as railway stations and large public events. The research outlines an AI-driven surveillance architecture that processes live CCTV feeds, extracts facial features using deep learning models, and matches them against national missing-children databases to generate alerts for authorities. The framework focuses on improving response time, identification accuracy, and building a scalable AI-powered public safety system.",
+        tags: ["Computer Vision", "Deep Learning", "CNN", "GeoSpatial", "Public Safety AI"],
         links: {
-            github: "#",
+            paper: "https://drive.google.com/file/d/1dTO_7IYRrIBIMjjPMt0HgLQz9Za-Avkk/view?usp=sharing",
         },
     },
     {
-        icon: "👁️",
-        category: "Research Paper",
-        title: "Real-Time Violence Detection Using Deep Learning for Public Safety",
+        icon: "🧬",
+        category: "AI in Healthcare / Biomedical Image Analysis",
+        title: "Deep Learning-Based Biomedical Image Analysis for Lung Cancer Detection",
         abstract:
-            "A deep-learning pipeline for real-time violence detection in CCTV footage, combining CNN/LSTM architectures with geolocation tracking and dynamic safe-route recommendations for proactive women's safety.",
-        tags: ["CNN/LSTM", "Computer Vision", "Surveillance AI", "GeoSpatial Analytics"],
+            "This research explores the application of deep learning techniques for biomedical image analysis, with a specific focus on lung cancer imaging and visualization. The study integrates advanced machine learning models, including Convolutional Neural Networks (CNNs) and Generative Adversarial Networks (GANs), to enhance feature extraction, dataset augmentation, and image interpretation. Lung cancer imaging data sourced from the PLCO cancer screening dataset is analyzed to evaluate the effectiveness of AI-driven approaches in identifying complex patterns within medical images. Additionally, the research leverages the Napari visualization tool to enable interactive exploration and multi-dimensional analysis of biomedical images. Various interpolation techniques are examined to improve the rendering and visualization of lung cancer images, supporting better interpretability of medical imaging data. The findings highlight the potential of combining deep learning, generative modeling, and advanced visualization tools to improve biomedical image analysis and assist researchers and clinicians in developing more effective diagnostic frameworks.",
+        tags: ["Deep Learning", "CNN", "GAN", "Computer Vision", "Biomedical Image Analysis", "Napari Visualization", "PLCO Cancer Screening Dataset"],
         links: {
-            paper: "#",
-            github: "#",
+            paper: "https://drive.google.com/file/d/1iXoYf21FmXmifkz_kk07bKeq33TsLDow/view?usp=drive_link",
         },
     },
     {
