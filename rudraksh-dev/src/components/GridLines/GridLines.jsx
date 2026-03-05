@@ -9,13 +9,14 @@ import './GridLines.css';
 const GridLines = ({
     size = 40,
     opacity = 0.15,
+    thickness = 1,
     color = "rgba(255, 255, 255, " + opacity + ")",
     maskType = "radial" // 'radial' or 'none'
 }) => {
     const gridStyle = {
         backgroundImage: `
-      linear-gradient(to right, ${color} 1px, transparent 1px),
-      linear-gradient(to bottom, ${color} 1px, transparent 1px)
+      linear-gradient(to right, ${color} ${thickness}px, transparent ${thickness}px),
+      linear-gradient(to bottom, ${color} ${thickness}px, transparent ${thickness}px)
     `,
         backgroundSize: `${size}px ${size}px`,
     };

@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import styles from "./Portfolio.module.css";
 import ProjectCard from "../ProjectCard/ProjectCard";
 import ElectricSpotlightCard from "../About/ElectricSpotlightCard";
+import GridLines from "../GridLines/GridLines";
 
 /* ═══════════════════════════════════════════════════════
    PROJECTS DATA
@@ -159,6 +160,11 @@ function Portfolio() {
 
     return (
         <section className={styles.portfolio} id="work" style={{ position: "relative" }}>
+            {/* ── GridLines Background ── */}
+            <div className={styles.gridBg}>
+                <GridLines size={60} opacity={0.15} thickness={2} maskType="radial" />
+            </div>
+
             <LightRays
                 className={styles.raysBackground}
                 raysOrigin="top-center"
