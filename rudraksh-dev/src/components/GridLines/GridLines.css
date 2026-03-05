@@ -1,0 +1,46 @@
+/* ═══════════════════════════════════════════════
+   GRID LINES — Premium Background Overlay
+   ═══════════════════════════════════════════════ */
+
+.grid-lines-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.grid-lines-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  will-change: opacity;
+}
+
+/* Optional radial mask to fade edges */
+.mask-radial {
+  mask-image: radial-gradient(
+    ellipse at center, 
+    black 20%, 
+    rgba(0, 0, 0, 0.4) 60%, 
+    transparent 85%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse at center, 
+    black 20%, 
+    rgba(0, 0, 0, 0.4) 60%, 
+    transparent 85%
+  );
+}
+
+/* Subtle animation to make it feel alive */
+@keyframes gridSubtlePulse {
+  0% { opacity: 0.85; }
+  50% { opacity: 1; }
+  100% { opacity: 0.85; }
+}
+
+.grid-lines-overlay {
+  animation: gridSubtlePulse 8s ease-in-out infinite;
+}

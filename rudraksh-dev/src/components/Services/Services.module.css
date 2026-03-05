@@ -1,0 +1,313 @@
+/* ═══════════════════════════════════════════════
+   SERVICES SECTION — Premium Dark AI Portfolio
+   Uses CSS variables from variable.css
+   Cyan accent: #7df9ff  |  Blue accent: var(--color-accent)
+   ═══════════════════════════════════════════════ */
+
+/* ── Section container ── */
+.services {
+  padding: var(--space-section) 40px;
+  border-top: 1px solid var(--color-border-subtle);
+  position: relative;
+  overflow: hidden;
+  background: #050505; /* Slightly darker than default bg for better contrast */
+}
+
+/* ── Grid Background Layer ── */
+.gridBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Subtle radial ambient behind the section */
+.services::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 600px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(59, 130, 246, 0.05) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+/* ═══════════════════════════════════════════════
+   SCROLL REVEAL — fade-in + slide-up
+   ═══════════════════════════════════════════════ */
+.sectionHeader,
+.card {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════
+   SECTION HEADER
+   ═══════════════════════════════════════════════ */
+.sectionHeader {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent);
+}
+
+.sectionHeading {
+  font-size: var(--font-size-heading);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+}
+
+.sectionSub {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════════
+   CARDS GRID — 3 / 2 / 1 columns
+   ═══════════════════════════════════════════════ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ═══════════════════════════════════════════════
+   SERVICE CARD
+   ═══════════════════════════════════════════════ */
+.card {
+  background: rgba(22, 22, 22, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  cursor: default;
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+  outline: none;
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-8px);
+  border-color: rgba(125, 249, 255, 0.22);
+  box-shadow:
+    0 8px 40px rgba(59, 130, 246, 0.12),
+    0 0 0 1px rgba(125, 249, 255, 0.08) inset;
+}
+
+/* Focus ring for keyboard nav */
+.card:focus-visible {
+  outline: 2px solid rgba(125, 249, 255, 0.5);
+  outline-offset: 3px;
+}
+
+/* ── Icon Container ── */
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.18);
+  flex-shrink: 0;
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.card:hover .iconWrap,
+.card:focus-visible .iconWrap {
+  transform: scale(1.12);
+  background: rgba(125, 249, 255, 0.12);
+  border-color: rgba(125, 249, 255, 0.28);
+}
+
+.iconEmoji {
+  font-size: 1.5rem;
+  line-height: 1;
+  display: block;
+}
+
+/* ── Card Title ── */
+.cardTitle {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+/* ── Tagline (accent color) ── */
+.tagline {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #7df9ff;
+  letter-spacing: 0.4px;
+  text-shadow: 0 0 10px rgba(125, 249, 255, 0.4);
+}
+
+/* ── Description ── */
+.cardDesc {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+  flex-grow: 1;
+}
+
+/* ── Deliverables Block ── */
+.deliverables {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.deliverablesLabel {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.deliverablesList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.deliverableItem {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  transition: color 0.25s ease;
+}
+
+.card:hover .deliverableItem,
+.card:focus-visible .deliverableItem {
+  color: var(--color-text-primary);
+}
+
+.bullet {
+  color: #7df9ff;
+  font-size: 0.65rem;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card:hover .bullet,
+.card:focus-visible .bullet {
+  transform: translateX(3px);
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — ≤ 1024 px  →  2 columns
+   ═══════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — ≤ 768 px  →  1 column
+   ═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .services {
+    padding: 80px 20px;
+  }
+
+  .container {
+    gap: 48px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .card {
+    padding: 24px 20px;
+  }
+
+  /* Graceful hover degradation on touch devices */
+  @media (hover: none) {
+    .card:hover {
+      transform: none;
+      border-color: rgba(255, 255, 255, 0.07);
+      box-shadow: none;
+    }
+
+    .card:hover .iconWrap {
+      transform: none;
+    }
+
+    .card:hover .bullet {
+      transform: none;
+    }
+  }
+}
