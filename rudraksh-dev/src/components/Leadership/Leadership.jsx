@@ -122,6 +122,30 @@ const LEADERSHIP = [
            "Managed cross-functional collaboration between faculty mentors, volunteers, and participants.",
         ],
     },
+    {
+        icon: "👑",
+        role: "Event Lead – IDEATHON 2025",
+        org: "IILM University, Gurugram",
+        duration: "Nov 2025",
+        description: "Led IDEATHON 2025, an innovation-driven idea pitching event organized at IILM University to encourage students to transform creative ideas into potential solutions for real-world problems. Managed the complete event lifecycle including idea submissions, participant coordination, evaluation rounds, and final presentations while working closely with faculty mentors and organizing teams.",
+        highlights: [
+            "Led the planning and execution of IDEATHON 2025, an innovation-focused student event at IILM University.",
+            "Coordinated idea submissions, participant coordination, evaluation rounds, and final presentations.",
+            "Managed cross-functional collaboration between faculty mentors, volunteers, and participants.",
+        ],
+    },
+    {
+        icon: "👥",
+        role: "Core Team Member & Registration Lead – New Batch Orientation",
+        org: "IILM University, Gurugram",
+        duration: "Aug 2025",
+        description: "Played a key role in the New Batch Orientation for the incoming batch of 2025 at IILM University, taking charge of registration processes and contributing to the overall coordination of orientation activities. Worked closely with the organizing team to ensure smooth onboarding and integration of new students into the university community.",
+        highlights: [
+            "Played a key role in the New Batch Orientation for the incoming batch of 2025 at IILM University.",
+            "Took charge of registration processes and contributed to the overall coordination of orientation activities.",
+            "Worked closely with the organizing team to ensure smooth onboarding and integration of new students into the university community.",
+        ],
+    },
 ];
 
 /* ═══════════════════════════════════════════════════════
