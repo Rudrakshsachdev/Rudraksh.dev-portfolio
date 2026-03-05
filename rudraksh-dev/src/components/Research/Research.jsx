@@ -31,46 +31,13 @@ const RESEARCH = [
     },
     {
         icon: "📄",
-        category: "AI System",
-        title: "NLP-Based Resume Analysis & AI Optimization Platform",
+        category: "Natural Language Processing (NLP) • AI for Recruitment • Intelligent Automation",
+        title: "NeuroParse: Intelligent Resume Analysis and Optimization Using NLP and Gemini AI",
         abstract:
-            "An AI-powered application that parses PDF/DOCX resumes using NLP and regex, extracts candidate information, evaluates profiles through a structured scoring algorithm, and provides AI-driven resume optimisation and job matching.",
-        tags: ["NLP", "spaCy", "NER", "Google Gemini", "Django"],
+            "This research introduces NeuroParse, an AI-powered resume analysis and optimization system designed to improve the efficiency and fairness of modern recruitment processes. The framework leverages Natural Language Processing (NLP) and Google Gemini AI to intelligently parse resumes in multiple formats such as PDF and DOCX, extracting key information including personal details, education, skills, projects, certifications, and professional experience. Unlike traditional keyword-based resume screening tools, NeuroParse focuses on contextual understanding using NLP-based techniques such as tokenization, entity recognition, and rule-based information extraction. The system further incorporates a structured resume scoring algorithm that evaluates candidates across multiple criteria including skill diversity, work experience, project portfolio, and resume completeness. Additionally, an integrated AI chatbot powered by Gemini provides personalized recommendations, resume improvement suggestions, and job-role matching insights. Experimental evaluations demonstrate that the proposed system achieves an overall extraction accuracy of approximately 91.8%, significantly reducing recruiter workload while minimizing bias in candidate evaluation. This research highlights the potential of combining AI-driven automation, intelligent document processing, and conversational AI to create smarter and more efficient recruitment systems.",
+        tags: ["NLP", "spaCy", "NER", "Google Gemini", "Django", "Bootstrap"],
         links: {
-            project: "#",
-        },
-    },
-    {
-        icon: "🔥",
-        category: "AI System",
-        title: "AI & IoT-Based Firefighter Rover for Hazardous Environments",
-        abstract:
-            "An intelligent fire detection and firefighting rover equipped with AI and IoT sensors for real-time flame detection, environmental monitoring, and remote operation in dangerous environments inaccessible to humans.",
-        tags: ["Robotics", "IoT", "Embedded Systems", "Sensor Fusion", "AI"],
-        links: {
-            github: "#",
-        },
-    },
-    {
-        icon: "🌐",
-        category: "Study",
-        title: "Scalable Full-Stack Architectures for AI-Integrated Platforms",
-        abstract:
-            "A study on designing production-grade full-stack applications that seamlessly integrate AI models, examining patterns for ML model serving, real-time inference APIs, and cloud-native deployment strategies.",
-        tags: ["React", "Django", "REST", "PostgreSQL", "Cloud", "ML Serving"],
-        links: {
-            project: "#",
-        },
-    },
-    {
-        icon: "⚡",
-        category: "AI System",
-        title: "Intelligent Automation Pipelines Using AI Agents & LLMs",
-        abstract:
-            "Exploring the design of intelligent automation workflows using AI agents, LangChain, and LLM orchestration to eliminate manual overhead in repetitive tasks — from browser automation to scheduled pipeline execution.",
-        tags: ["LangChain", "CrewAI", "LLM", "Automation", "Python"],
-        links: {
-            github: "#",
+            paper: "https://drive.google.com/file/d/1EFwYdzrS8Y2K9Fbg-kwexIi_YwT8iIyO/view?usp=drive_link",
         },
     },
 ];
