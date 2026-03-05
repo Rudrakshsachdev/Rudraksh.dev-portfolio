@@ -8,6 +8,7 @@ import Research from "./components/Research/Research";
 import Achievements from "./components/Achievements/Achievements";
 import Journey from "./components/Journey/Journey";
 import Contact from "./components/Contact/Contact";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Achievements />
       <Journey />
       <Contact />
+      <Footer />
     </>
   );
 }
