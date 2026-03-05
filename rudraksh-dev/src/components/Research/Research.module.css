@@ -1,0 +1,490 @@
+/* ═══════════════════════════════════════════════
+   RESEARCH SECTION — Experimental Futuristic Layout
+   Asymmetric staggered grid | Left accent bars
+   ═══════════════════════════════════════════════ */
+
+/* ── Section ── */
+.research {
+  padding: var(--space-section) 40px;
+  border-top: 1px solid var(--color-border-subtle);
+  position: relative;
+  overflow: hidden;
+  background: #050508;
+}
+
+/* ── Grid Background ── */
+.gridBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── Diagonal streak accent ── */
+.streak {
+  position: absolute;
+  top: 15%;
+  left: -10%;
+  width: 140%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(125, 249, 255, 0.06) 20%,
+    rgba(59, 130, 246, 0.1) 50%,
+    rgba(125, 249, 255, 0.06) 80%,
+    transparent 100%
+  );
+  transform: rotate(-4deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Container ── */
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+/* ═══════════════════════════════════════════════
+   SCROLL REVEAL
+   ═══════════════════════════════════════════════ */
+.sectionHeader,
+.card {
+  opacity: 0;
+  transform: translateY(36px);
+  transition:
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger offsets — even cards rest higher, odd lower */
+.visible.staggerUp {
+  transform: translateY(-6px);
+}
+
+.visible.staggerDown {
+  transform: translateY(6px);
+}
+
+/* ═══════════════════════════════════════════════
+   SECTION HEADER
+   ═══════════════════════════════════════════════ */
+.sectionHeader {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent);
+}
+
+.sectionHeading {
+  font-size: var(--font-size-heading);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+}
+
+.sectionSub {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  max-width: 640px;
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════════
+   GRID — 3 / 2 / 1
+   ═══════════════════════════════════════════════ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: start; /* allow stagger offset */
+}
+
+/* ═══════════════════════════════════════════════
+   RESEARCH CARD
+   ═══════════════════════════════════════════════ */
+.card {
+  position: relative;
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: default;
+  outline: none;
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s ease;
+}
+
+.card:hover,
+.card:focus-visible {
+  box-shadow:
+    0 16px 56px rgba(59, 130, 246, 0.12),
+    0 0 80px -20px rgba(125, 249, 255, 0.08);
+}
+
+/* Move staggered cards on hover */
+.card.staggerUp:hover,
+.card.staggerUp:focus-visible {
+  transform: translateY(-14px);
+}
+
+.card.staggerDown:hover,
+.card.staggerDown:focus-visible {
+  transform: translateY(-2px);
+}
+
+.card:focus-visible {
+  outline: 2px solid rgba(125, 249, 255, 0.5);
+  outline-offset: 3px;
+}
+
+/* ── Left accent bar ── */
+.accentBar {
+  width: 4px;
+  flex-shrink: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(125, 249, 255, 0.5) 0%,
+    rgba(59, 130, 246, 0.6) 50%,
+    rgba(125, 249, 255, 0.3) 100%
+  );
+  border-radius: 4px 0 0 4px;
+  transition:
+    background 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.card:hover .accentBar,
+.card:focus-visible .accentBar {
+  background: linear-gradient(
+    180deg,
+    rgba(125, 249, 255, 0.9) 0%,
+    rgba(59, 130, 246, 0.9) 50%,
+    rgba(125, 249, 255, 0.7) 100%
+  );
+  box-shadow:
+    0 0 12px rgba(125, 249, 255, 0.4),
+    0 0 24px rgba(59, 130, 246, 0.2);
+}
+
+/* ── Card inner content ── */
+.cardInner {
+  flex: 1;
+  background: rgba(14, 14, 18, 0.8);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-left: none;
+  border-radius: 0 20px 20px 0;
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s ease;
+}
+
+/* Subtle inner gradient overlay */
+.cardInner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 50%;
+  background: radial-gradient(
+    ellipse at top right,
+    rgba(59, 130, 246, 0.04) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover .cardInner,
+.card:focus-visible .cardInner {
+  border-color: rgba(125, 249, 255, 0.12);
+}
+
+.card:hover .cardInner::before,
+.card:focus-visible .cardInner::before {
+  opacity: 2;
+}
+
+/* ── Top row: icon + category ── */
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.14);
+  flex-shrink: 0;
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.card:hover .iconWrap,
+.card:focus-visible .iconWrap {
+  transform: scale(1.1);
+  background: rgba(125, 249, 255, 0.1);
+  border-color: rgba(125, 249, 255, 0.25);
+  box-shadow: 0 0 14px rgba(125, 249, 255, 0.1);
+}
+
+.iconEmoji {
+  font-size: 1.3rem;
+  line-height: 1;
+  display: block;
+}
+
+.categoryBadge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #7df9ff;
+  padding: 4px 12px;
+  background: rgba(125, 249, 255, 0.06);
+  border: 1px solid rgba(125, 249, 255, 0.12);
+  border-radius: 9999px;
+  text-shadow: 0 0 8px rgba(125, 249, 255, 0.3);
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card:hover .categoryBadge,
+.card:focus-visible .categoryBadge {
+  background: rgba(125, 249, 255, 0.1);
+  border-color: rgba(125, 249, 255, 0.22);
+  box-shadow: 0 0 10px rgba(125, 249, 255, 0.08);
+}
+
+/* ── Title ── */
+.cardTitle {
+  position: relative;
+  z-index: 1;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+/* ── Abstract ── */
+.abstract {
+  position: relative;
+  z-index: 1;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Tags ── */
+.tagsWrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 6px;
+}
+
+.tag {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: var(--color-text-muted);
+  padding: 3px 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card:hover .tag,
+.card:focus-visible .tag {
+  color: var(--color-text-secondary);
+  background: rgba(59, 130, 246, 0.08);
+  border-color: rgba(59, 130, 246, 0.15);
+  transform: translateY(-1px);
+}
+
+/* ── Links row ── */
+.linksRow {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.linkBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: 5px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.linkBtn:hover,
+.linkBtn:focus-visible {
+  color: #7df9ff;
+  background: rgba(125, 249, 255, 0.06);
+  border-color: rgba(125, 249, 255, 0.2);
+}
+
+.linkIcon {
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — ≤ 1024 px → 2 columns
+   ═══════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+
+  /* Reduce stagger on tablet */
+  .visible.staggerUp {
+    transform: translateY(-6px);
+  }
+
+  .visible.staggerDown {
+    transform: translateY(6px);
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — ≤ 768 px → 1 column
+   ═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .research {
+    padding: 80px 20px;
+  }
+
+  .container {
+    gap: 48px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Remove stagger on mobile */
+  .visible.staggerUp,
+  .visible.staggerDown {
+    transform: translateY(0);
+  }
+
+  .cardInner {
+    padding: 22px 18px;
+  }
+
+  .streak {
+    display: none;
+  }
+
+  /* Graceful hover degradation */
+  @media (hover: none) {
+    .card:hover,
+    .card.staggerUp:hover,
+    .card.staggerDown:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .card:hover .accentBar {
+      box-shadow: none;
+    }
+
+    .card:hover .iconWrap {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .card:hover .tag {
+      transform: none;
+    }
+
+    .card:hover .cardGlow {
+      opacity: 0;
+    }
+  }
+}
