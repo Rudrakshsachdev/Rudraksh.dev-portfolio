@@ -5,6 +5,7 @@ import Portfolio from "./components/Portfolio/Portfolio";
 import Services from "./components/Services/Services";
 import Leadership from "./components/Leadership/Leadership";
 import Research from "./components/Research/Research";
+import Achievements from "./components/Achievements/Achievements";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Services />
       <Leadership />
       <Research />
+      <Achievements />
     </>
   );
 }
