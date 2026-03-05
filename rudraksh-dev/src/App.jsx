@@ -6,6 +6,7 @@ import Services from "./components/Services/Services";
 import Leadership from "./components/Leadership/Leadership";
 import Research from "./components/Research/Research";
 import Achievements from "./components/Achievements/Achievements";
+import Journey from "./components/Journey/Journey";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Leadership />
       <Research />
       <Achievements />
+      <Journey />
     </>
   );
 }

@@ -1,0 +1,369 @@
+/* ═══════════════════════════════════════════════
+   JOURNEY / PHOTO CAROUSEL SECTION
+   Cinematic gallery wall style with depth and glassmorphism.
+   ═══════════════════════════════════════════════ */
+
+/* ── Section wrapper ── */
+.journey {
+  padding: var(--space-section) 0;
+  border-top: 1px solid var(--color-border-subtle);
+  position: relative;
+  overflow: hidden;
+  background: #040406; /* Deep engaging background */
+}
+
+/* Scroll reveal opacity / transform */
+.journey {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.journey.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Ambient Glow Background ── */
+.bgGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60vw;
+  height: 60vh;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gridBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── Content container ── */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding: 0 40px;
+}
+
+/* ═══════════════════════════════════════════════
+   SECTION HEADER
+   ═══════════════════════════════════════════════ */
+.sectionHeader {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent);
+}
+
+.sectionHeading {
+  font-size: var(--font-size-heading);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+}
+
+.sectionSub {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════════
+   CAROUSEL WRAPPER & NAVIGATION
+   ═══════════════════════════════════════════════ */
+.carouselWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(14, 14, 18, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-text-primary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.navBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.navBtn:not(:disabled):hover {
+  background: rgba(125, 249, 255, 0.15);
+  border-color: rgba(125, 249, 255, 0.3);
+  color: #7df9ff;
+  box-shadow: 0 0 20px rgba(125, 249, 255, 0.2);
+}
+
+.prevBtn {
+  left: -20px;
+}
+
+.nextBtn {
+  right: -20px;
+}
+
+/* ═══════════════════════════════════════════════
+   TRACK & CARDS (Scroll Snap Carousel)
+   ═══════════════════════════════════════════════ */
+.track {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 40px 0; /* padding for boxShadow/scale */
+  cursor: grab;
+  /* hide scrollbar */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.track.dragging {
+  cursor: grabbing;
+  scroll-behavior: auto; /* disable smooth snapping during mouse drag */
+  scroll-snap-type: none;
+}
+
+/* ── Spacers to allow centering first and last cards ── */
+.spacer {
+  flex-shrink: 0;
+  width: 15vw; /* Adjust based on card width to center first/last item */
+}
+
+/* ── Cards base state (Inactive side cards) ── */
+.card {
+  position: relative;
+  flex: 0 0 65%; /* Card width */
+  max-width: 800px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  scroll-snap-align: center;
+  user-select: none;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.5);
+  
+  /* Cinematic Depth Transitions */
+  opacity: 0.4;
+  transform: scale(0.85);
+  filter: blur(4px) brightness(0.6);
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.6s ease,
+    filter 0.6s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+/* ── Active (Centered) Card ── */
+.card.cardActive {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0) brightness(1);
+  border-color: rgba(125, 249, 255, 0.2);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(59, 130, 246, 0.15);
+  z-index: 2;
+}
+
+/* Hover effect on active card */
+.card.cardActive:hover {
+  transform: scale(1.02);
+  border-color: rgba(125, 249, 255, 0.4);
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.5),
+    0 0 50px rgba(125, 249, 255, 0.2);
+}
+
+/* Image */
+.image {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  object-position: center 25%; /* Keeps focus slightly higher up to avoid cutting faces */
+  display: block;
+  pointer-events: none; /* Prevents dragging the image ghost */
+  transition: transform 0.8s ease;
+}
+
+.card.cardActive:hover .image {
+  transform: scale(1.04);
+}
+
+/* ── Bottom Overlay Panel (Glassmorphism) ── */
+.overlayPanel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 32px;
+  background: linear-gradient(
+    to top,
+    rgba(8, 8, 12, 0.95) 0%,
+    rgba(8, 8, 12, 0.7) 40%,
+    transparent 100%
+  );
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  transform: translateY(10px);
+  opacity: 0.9;
+  transition: 
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.5s ease;
+}
+
+.card.cardActive .overlayPanel {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.card.cardActive:hover .overlayPanel {
+  background: linear-gradient(
+    to top,
+    rgba(8, 8, 12, 0.98) 0%,
+    rgba(8, 8, 12, 0.8) 50%,
+    transparent 100%
+  );
+  border-top-color: rgba(125, 249, 255, 0.15);
+}
+
+.cardTitle {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+  transition: color 0.3s ease;
+}
+
+.card.cardActive:hover .cardTitle {
+  color: #7df9ff;
+}
+
+.cardSubtitle {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .spacer {
+    width: 2vw;
+  }
+  .card {
+    flex: 0 0 85%;
+  }
+  .image {
+    height: 400px;
+  }
+  .prevBtn {
+    left: 0;
+  }
+  .nextBtn {
+    right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+  .navBtn {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  .prevBtn {
+    left: 10px;
+  }
+  .nextBtn {
+    right: 10px;
+  }
+  .card {
+    flex: 0 0 90%;
+  }
+  .spacer {
+    width: 0;
+  }
+  .image {
+    height: 320px;
+  }
+  .overlayPanel {
+    padding: 24px 20px;
+  }
+  .cardTitle {
+    font-size: 1.15rem;
+  }
+  .cardSubtitle {
+    font-size: 0.85rem;
+  }
+  
+  /* On mobile, remove extreme scaling for better swipe feel */
+  .card {
+    transform: scale(0.95);
+    filter: blur(2px) brightness(0.8);
+  }
+  .card.cardActive {
+    transform: scale(1);
+    filter: blur(0) brightness(1);
+  }
+}
