@@ -110,6 +110,18 @@ const LEADERSHIP = [
             "Improved code quality & documentation",
         ],
     },
+    {
+        icon: "🎤",
+        role: "Event Lead – CODECRAFT 2026 | From Idea to Implementation",
+        org: "IILM University, Gurugram",
+        duration: "Feb 2026",
+        description: "Led CODECRAFT 2026, a student-driven innovation event organized under the Center of Excellence in AI, School of Computer Science & Engineering, IILM University. Managed the end-to-end execution of the event, including participant registrations, project shortlisting, judge coordination, and on-ground operations, while working closely with faculty mentors, volunteers, and student teams to ensure a seamless and impactful experience.",
+        highlights: [
+            "Led the planning and execution of CODECRAFT 2026, an innovation-focused student event at IILM University.",
+            "Coordinated registrations, project shortlisting, judge evaluation, and event logistics.",
+           "Managed cross-functional collaboration between faculty mentors, volunteers, and participants.",
+        ],
+    },
 ];
 
 /* ═══════════════════════════════════════════════════════
