@@ -59,6 +59,7 @@ const QUICK_LINKS_2 = [
     { name: "Leadership", href: "#leadership" },
     { name: "Research", href: "#research" },
     { name: "Achievements", href: "#achievements" },
+    { name: "Certifications", href: "#certifications" },
     { name: "Journey", href: "#journey" },
     { name: "Contact", href: "#contact" },
 ];

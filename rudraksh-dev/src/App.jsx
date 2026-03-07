@@ -6,6 +6,7 @@ import Services from "./components/Services/Services";
 import Leadership from "./components/Leadership/Leadership";
 import Research from "./components/Research/Research";
 import Achievements from "./components/Achievements/Achievements";
+import Certifications from "./components/Certifications/Certifications";
 import Journey from "./components/Journey/Journey";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
@@ -21,6 +22,7 @@ function App() {
       <Leadership />
       <Research />
       <Achievements />
+      <Certifications />
       <Journey />
       <Contact />
       <Footer />

@@ -36,6 +36,7 @@ function Navbar() {
         { label: "Leadership", href: "#leadership" },
         { label: "Research", href: "#research" },
         { label: "Achievements", href: "#achievements" },
+        { label: "Certifications", href: "#certifications" },
         { label: "Journey", href: "#journey" },
         { label: "Contact", href: "#contact" },
     ];
@@ -70,9 +71,9 @@ function Navbar() {
                     <a href={resume} download="Rudraksh_Sachdeva_Resume.pdf" target="_blank" rel="noopener noreferrer" className={styles.ctaResume}>
                         Resume
                     </a>
-                    <a href="#contact" className={styles.ctaContact}>
+                    {/* <a href="#contact" className={styles.ctaContact}>
                         Get in Touch
-                    </a>
+                    </a> */}
                 </div>
 
                 {/* ── Mobile hamburger ── */}
