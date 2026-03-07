@@ -130,7 +130,7 @@
   flex-shrink: 0;
 }
 
-.ctaLogin {
+.ctaResume {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -149,13 +149,13 @@
     border-color var(--transition-smooth);
 }
 
-.ctaLogin:hover {
+.ctaResume:hover {
   color: var(--color-text-primary);
   background: var(--color-accent-soft);
   border-color: var(--color-accent);
 }
 
-.ctaSignup {
+.ctaContact {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -173,7 +173,7 @@
     box-shadow var(--transition-smooth);
 }
 
-.ctaSignup:hover {
+.ctaContact:hover {
   filter: brightness(1.12);
   box-shadow: 0 0 16px rgba(59, 130, 246, 0.35);
 }
@@ -293,8 +293,8 @@
   padding-top: 32px;
 }
 
-.mobileCta .ctaLogin,
-.mobileCta .ctaSignup {
+.mobileCta .ctaResume,
+.mobileCta .ctaContact {
   width: 100%;
   text-align: center;
   padding: 12px 0;

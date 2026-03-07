@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
+import resume from "../../assets/rudraksh.dev.pdf";
 
 function Navbar() {
     const [scrolled, setScrolled] = useState(false);
@@ -28,9 +29,14 @@ function Navbar() {
     const closeMenu = () => setMenuOpen(false);
 
     const navLinks = [
-        { label: "Work", href: "#work" },
-        { label: "Expertise", href: "#expertise" },
-        { label: "Architecture", href: "#architecture" },
+        { label: "Home", href: "#home" },
+        { label: "About", href: "#about" },
+        { label: "Projects", href: "#projects" },
+        { label: "Services", href: "#services" },
+        { label: "Leadership", href: "#leadership" },
+        { label: "Research", href: "#research" },
+        { label: "Achievements", href: "#achievements" },
+        { label: "Journey", href: "#journey" },
         { label: "Contact", href: "#contact" },
     ];
 
@@ -61,11 +67,11 @@ function Navbar() {
 
                 {/* ── Desktop CTA buttons ── */}
                 <div className={styles.cta}>
-                    <a href="#login" className={styles.ctaLogin}>
-                        Login
+                    <a href={resume} download="Rudraksh_Sachdeva_Resume.pdf" target="_blank" rel="noopener noreferrer" className={styles.ctaResume}>
+                        Resume
                     </a>
-                    <a href="#signup" className={styles.ctaSignup}>
-                        Sign Up
+                    <a href="#contact" className={styles.ctaContact}>
+                        Get in Touch
                     </a>
                 </div>
 
@@ -102,11 +108,11 @@ function Navbar() {
                 </nav>
 
                 <div className={styles.mobileCta}>
-                    <a href="#login" className={styles.ctaLogin} onClick={closeMenu}>
-                        Login
+                    <a href={resume} download="Rudraksh_Sachdeva_Resume.pdf" target="_blank" rel="noopener noreferrer" className={styles.ctaResume} onClick={closeMenu}>
+                        Resume
                     </a>
-                    <a href="#signup" className={styles.ctaSignup} onClick={closeMenu}>
-                        Sign Up
+                    <a href="#contact" className={styles.ctaContact} onClick={closeMenu}>
+                        Get in Touch
                     </a>
                 </div>
             </div>
