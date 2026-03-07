@@ -177,9 +177,20 @@
   text-decoration: underline;
 }
 
+.miniIcon {
+  display: inline-flex;
+  align-items: center;
+  color: #7df9ff;
+  font-size: 1.1rem;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
 .locationInfo {
   color: rgba(255, 255, 255, 0.4);
   font-size: 0.95rem;
+  display: flex;
+  align-items: center;
 }
 
 .backToTop {

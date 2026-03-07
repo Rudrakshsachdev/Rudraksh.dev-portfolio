@@ -175,8 +175,12 @@
   box-shadow: 0 0 15px rgba(125, 249, 255, 0.15);
 }
 
-.iconEmoji {
+.iconSVG {
   font-size: 1.4rem;
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .infoText {
