@@ -123,9 +123,10 @@
   display: flex;
   gap: 24px;
   padding-left: 24px;
-  animation: scrollX 40s linear infinite;
+  animation: scrollX 35s linear infinite; /* Slightly faster for smoother perception */
   /* Hardware acceleration */
   will-change: transform;
+  transform: translateZ(0); /* Force GPU layer */
 }
 
 /* Pause animation on hover */
@@ -135,12 +136,11 @@
 
 @keyframes scrollX {
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    /* Translate by exactly the width of ONE set of items */
-    /* Since we mapped the array 3 times, we translate by -33.333% */
-    transform: translateX(calc(-100% / 3));
+    /* Since we have exactly 2 sets now, we translate by -50% to loop infinitely */
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -181,7 +181,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  background: linear-gradient(90deg, transparent, var(--hover-color, var(--color-accent)), transparent);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -199,15 +199,54 @@
   flex-shrink: 0;
 }
 
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(18, 18, 22, 1) 0%, rgba(18, 18, 22, 0) 100%),
+              radial-gradient(circle at center, var(--overlay-color, transparent) 0%, transparent 60%);
+  opacity: 0.6;
+  z-index: 1;
+  transition: opacity 0.4s ease;
+}
+
+.certCard:hover .imageOverlay {
+  opacity: 0.8;
+}
+
+.floatingLogo {
+  position: absolute;
+  bottom: -20px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  background: rgba(18, 18, 22, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  z-index: 3;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.certCard:hover .floatingLogo {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+}
+
 .cardImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0.85;
 }
 
 .certCard:hover .cardImage {
-  transform: scale(1.05);
+  transform: scale(1.08);
+  opacity: 1;
 }
 
 .cardContent {
@@ -223,20 +262,9 @@
 .cardTop {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: flex-end;
   margin-bottom: 20px;
-}
-
-.logoWrap {
-  width: 48px;
-  height: 48px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
+  padding-top: 10px; /* Space for the floating logo */
 }
 
 .certYear {
@@ -261,10 +289,10 @@
 }
 
 .certOrg {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #7df9ff;
-  opacity: 0.8;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .cardBottom {
@@ -284,7 +312,7 @@
 }
 
 .certCard:hover .viewLink {
-  color: #7df9ff;
+  color: var(--link-hover, #7df9ff);
 }
 
 .arrow {
