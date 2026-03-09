@@ -38,6 +38,27 @@ const StanfordIcon = () => (
     </svg>
 );
 
+const ExternalLinkIcon = () => (
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M6 2h8v8" />
+        <path d="M14 2L6 10" />
+    </svg>
+);
+
+const CalendarIcon = () => (
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="3" width="12" height="11" rx="2" />
+        <path d="M5 1v3M11 1v3M2 7h12" />
+    </svg>
+);
+
+const KeyIcon = () => (
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="10.5" cy="5.5" r="3.5" />
+        <path d="M8 8l-5 5M5 11l2 2" />
+    </svg>
+);
+
 /* ═══════════════════════════════════════════════════════
    CERTIFICATION DATA
    ═══════════════════════════════════════════════════════ */
@@ -46,6 +67,7 @@ const CERTIFICATIONS = [
         id: "cert-google-gen-ai",
         title: "Google Generative AI",
         organization: "Google Cloud",
+        issueDate: "Sep 2024",
         year: "2024",
         logo: <GoogleCloudIcon />,
         color: "#4285F4",
@@ -58,6 +80,7 @@ const CERTIFICATIONS = [
         id: "cert-aws",
         title: "AWS Certified Solutions Architect",
         organization: "Amazon Web Services",
+        issueDate: "Jun 2024",
         year: "2024",
         logo: <AwsIcon />,
         color: "#FF9900",
@@ -70,6 +93,7 @@ const CERTIFICATIONS = [
         id: "cert-ml",
         title: "Machine Learning Specialization",
         organization: "DeepLearning.AI / Stanford",
+        issueDate: "Nov 2023",
         year: "2023",
         logo: <StanfordIcon />,
         color: "#F92672",
@@ -82,6 +106,7 @@ const CERTIFICATIONS = [
         id: "cert-meta",
         title: "Meta Front-End Developer",
         organization: "Meta",
+        issueDate: "Aug 2023",
         year: "2023",
         logo: <MetaIcon />,
         color: "#0668E1",
@@ -94,6 +119,7 @@ const CERTIFICATIONS = [
         id: "cert-google",
         title: "Google Cloud Data Engineer",
         organization: "Google Cloud",
+        issueDate: "Mar 2024",
         year: "2024",
         logo: <GoogleCloudIcon />,
         color: "#4285F4",
@@ -106,6 +132,7 @@ const CERTIFICATIONS = [
         id: "cert-docker",
         title: "Docker Certified Associate",
         organization: "Docker",
+        issueDate: "Dec 2022",
         year: "2022",
         logo: <DockerIcon />,
         color: "#2496ED",
@@ -116,12 +143,114 @@ const CERTIFICATIONS = [
     }
 ];
 
-// Combine arrays two sets for better performance and 50% scroll logic
-const MARQUEE_ITEMS = [...CERTIFICATIONS, ...CERTIFICATIONS];
+/* ═══════════════════════════════════════════════════════
+   useScrollReveal — lightweight intersection observer
+   Adds a CSS class when elements scroll into view
+   ═══════════════════════════════════════════════════════ */
+function useScrollReveal() {
+    const refs = useRef([]);
 
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add(styles.visible);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+        );
+
+        refs.current.forEach((el) => {
+            if (el) observer.observe(el);
+        });
+
+        return () => observer.disconnect();
+    }, []);
+
+    const setRef = (index) => (el) => {
+        refs.current[index] = el;
+    };
+
+    return setRef;
+}
+
+/* ═══════════════════════════════════════════════════════
+   CertificationCard
+   ═══════════════════════════════════════════════════════ */
+function CertificationCard({ data, onOpenModal, refCallback, revealDelay }) {
+    return (
+        <article
+            className={styles.card}
+            ref={refCallback}
+            style={{ transitionDelay: `${revealDelay}ms`, '--brand-color': data.color }}
+            tabIndex={0}
+            aria-label={`Certification: ${data.title}`}
+            onClick={(e) => onOpenModal(data, e)}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onOpenModal(data, e); } }}
+        >
+            {/* ── Top accent glow line ── */}
+            <div className={styles.cardAccent} aria-hidden="true" />
+
+            {/* ── Header: icon + org + year ── */}
+            <div className={styles.cardHeader}>
+                <div className={styles.iconWrap} aria-hidden="true">
+                    <span className={styles.iconSvg}>{data.logo}</span>
+                </div>
+                <div className={styles.headerMeta}>
+                    <span className={styles.orgName}>{data.organization}</span>
+                    <span className={styles.yearBadge}>{data.year}</span>
+                </div>
+            </div>
+
+            {/* ── Title ── */}
+            <h3 className={styles.cardTitle}>{data.title}</h3>
+
+            {/* ── Description ── */}
+            <p className={styles.cardDesc}>{data.description}</p>
+
+            {/* ── Metadata row ── */}
+            <div className={styles.metaRow}>
+                {data.issueDate && (
+                    <div className={styles.metaChip}>
+                        <CalendarIcon />
+                        <span>{data.issueDate}</span>
+                    </div>
+                )}
+                {data.credentialId && (
+                    <div className={styles.metaChip}>
+                        <KeyIcon />
+                        <span>{data.credentialId}</span>
+                    </div>
+                )}
+            </div>
+
+            {/* ── Footer ── */}
+            <div className={styles.cardFooter}>
+                <a
+                    href={data.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.verifyLink}
+                    onClick={(e) => e.stopPropagation()}
+                    aria-label={`Verify ${data.title} credential`}
+                >
+                    Verify Credential <ExternalLinkIcon />
+                </a>
+            </div>
+        </article>
+    );
+}
+
+/* ═══════════════════════════════════════════════════════
+   Certifications — main section
+   ═══════════════════════════════════════════════════════ */
 function Certifications() {
     const [selectedCert, setSelectedCert] = useState(null);
-    const scrollRef = useRef(null);
+    const setRef = useScrollReveal();
+    let refIndex = 0;
 
     // Close modal on Escape key
     useEffect(() => {
@@ -130,7 +259,7 @@ function Certifications() {
         };
         if (selectedCert) {
             document.addEventListener("keydown", handleKeyDown);
-            document.body.style.overflow = "hidden"; // Prevent background scrolling
+            document.body.style.overflow = "hidden";
         }
         return () => {
             document.removeEventListener("keydown", handleKeyDown);
@@ -148,7 +277,7 @@ function Certifications() {
     };
 
     return (
-        <section className={styles.certSection} id="certifications">
+        <section className={styles.certSection} id="certifications" aria-labelledby="cert-heading">
             {/* Background elements */}
             <div className={styles.gridBg}>
                 <GridLines size={40} opacity={0.15} thickness={1} maskType="linear" />
@@ -156,64 +285,34 @@ function Certifications() {
             <div className={styles.ambientGlow} aria-hidden="true" />
 
             <div className={styles.container}>
-                {/* Header */}
-                <div className={styles.sectionHeader}>
+                {/* ── Header ── */}
+                <div className={styles.sectionHeader} ref={setRef(refIndex++)}>
                     <span className={styles.label}>
                         <span className={styles.dot} aria-hidden="true" />
                         CREDENTIALS
                         <span className={styles.dot} aria-hidden="true" />
                     </span>
-                    <h2 className={styles.sectionHeading}>Certifications</h2>
+                    <h2 className={styles.sectionHeading} id="cert-heading">Certifications</h2>
                     <p className={styles.sectionSub}>
                         Professional certifications and technical credentials that strengthen my expertise in AI, software engineering, and emerging technologies.
                     </p>
                 </div>
 
-                {/* Marquee Track */}
-                <div className={styles.marqueeWrapper}>
-                    {/* Subtle gradient fades on edges */}
-                    <div className={`${styles.fade} ${styles.fadeLeft}`}></div>
-                    <div className={`${styles.fade} ${styles.fadeRight}`}></div>
-
-                    <div className={styles.marqueeContainer} ref={scrollRef}>
-                        <div className={styles.marqueeTrack}>
-                            {MARQUEE_ITEMS.map((cert, index) => (
-                                <button
-                                    key={`${cert.id}-${index}`}
-                                    className={styles.certCard}
-                                    onClick={(e) => openModal(cert, e)}
-                                    aria-label={`View details for ${cert.title}`}
-                                >
-                                    <div className={styles.cardGlow} style={{ '--hover-color': cert.color }}></div>
-                                    <div className={styles.cardImageWrap}>
-                                        <div className={styles.imageOverlay} style={{ '--overlay-color': cert.color }}></div>
-                                        <img src={cert.image} alt={cert.title} className={styles.cardImage} loading="lazy" />
-                                        <div className={styles.floatingLogo} style={{ color: cert.color }}>
-                                            {cert.logo}
-                                        </div>
-                                    </div>
-                                    <div className={styles.cardContent}>
-                                        <div className={styles.cardTop}>
-                                            <span className={styles.certOrg} style={{ color: cert.color }}>{cert.organization}</span>
-                                            <span className={styles.certYear}>{cert.year}</span>
-                                        </div>
-                                        <div className={styles.cardMiddle}>
-                                            <h3 className={styles.certTitle}>{cert.title}</h3>
-                                        </div>
-                                        <div className={styles.cardBottom}>
-                                            <span className={styles.viewLink} style={{ '--link-hover': cert.color }}>
-                                                View Credential <span className={styles.arrow}>↗</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </button>
-                            ))}
-                        </div>
-                    </div>
+                {/* ── Grid ── */}
+                <div className={styles.grid}>
+                    {CERTIFICATIONS.map((cert, i) => (
+                        <CertificationCard
+                            key={cert.id}
+                            data={cert}
+                            onOpenModal={openModal}
+                            refCallback={setRef(refIndex++)}
+                            revealDelay={i * 80}
+                        />
+                    ))}
                 </div>
             </div>
 
-            {/* Detail Modal Overlay */}
+            {/* ═══════════ Detail Modal ═══════════ */}
             {selectedCert && (
                 <div className={styles.modalOverlay} onClick={closeModal} role="dialog" aria-modal="true" aria-labelledby="modal-title">
                     <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
@@ -237,7 +336,7 @@ function Certifications() {
                             <div className={styles.metaData}>
                                 <div className={styles.metaItem}>
                                     <span className={styles.metaLabel}>Date Issued</span>
-                                    <span className={styles.metaValue}>{selectedCert.year}</span>
+                                    <span className={styles.metaValue}>{selectedCert.issueDate || selectedCert.year}</span>
                                 </div>
                                 {selectedCert.credentialId && (
                                     <div className={styles.metaItem}>
