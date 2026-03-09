@@ -73,13 +73,13 @@ const CERTIFICATIONS = [
         color: "#4285F4",
         image: GoogleCert,
         description: "Comprehensive certification in Generative AI technology, covering LLMs, diffusion models, and responsible AI implementation within Google Cloud.",
-        credentialId: "G-AID-1024",
-        link: "#"
+        credentialId: "11212714",
+        link: "https://www.skills.google/public_profiles/2330d8a4-c091-4e21-9d4a-c5f7d7e93c32/badges/11212714?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share"
     },
     {
-        id: "cert-aws",
-        title: "AWS Certified Solutions Architect",
-        organization: "Amazon Web Services",
+        id: "cert-mycaptain",
+        title: "C Programming",
+        organization: "myCaptain",
         issueDate: "Jun 2024",
         year: "2024",
         logo: <AwsIcon />,
