@@ -19,6 +19,12 @@ const MetaIcon = () => (
     </svg>
 );
 
+const MyCaptainIcon = () => (
+    <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 21V5l9 6 9-6v16h-4V9.5l-5 3.33L7 9.5V21H3z" />
+    </svg>
+);
+
 const GoogleCloudIcon = () => (
     <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg">
         <path d="M22.38 10.94h-2.12v-.03h-3.41v.03H12V8.46h6.85c-.93-2.58-3.4-4.52-6.52-4.52-3.8 0-6.88 3.12-6.88 6.96 0 3.84 3.08 6.96 6.88 6.96 2.05 0 3.9-.92 5.15-2.39l1.83 1.85c-1.8 1.83-4.27 2.97-6.98 2.97-5.32 0-9.64-4.36-9.64-9.75S7.01 1.25 12.33 1.25c4.77 0 8.74 3.47 9.53 8.04l.52 1.65z" />
@@ -82,11 +88,11 @@ const CERTIFICATIONS = [
         organization: "myCaptain",
         issueDate: "Jun 2024",
         year: "2024",
-        logo: <AwsIcon />,
-        color: "#FF9900",
-        image: "https://placehold.co/600x400/121216/FF9900?text=AWS+Certificate",
-        description: "Validates technical expertise in designing and deploying scalable, highly available, and fault-tolerant systems on AWS.",
-        credentialId: "AWS-123456",
+        logo: <MyCaptainIcon />,
+        color: "#F44336",
+        image: "https://drive.google.com/file/d/1-FrWI8-pOdEeMCBFRAH_89xCfWE5qMqE/view  ",
+        description: "Comprehensive foundational course in C Programming, focusing on core concepts, algorithms, and practical application development.",
+        credentialId: "MC-789012",
         link: "#"
     },
     {
