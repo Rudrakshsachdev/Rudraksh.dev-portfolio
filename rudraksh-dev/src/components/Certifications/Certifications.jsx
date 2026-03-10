@@ -25,6 +25,12 @@ const MyCaptainIcon = () => (
     </svg>
 );
 
+const ThaparIcon = () => (
+    <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+    </svg>
+);
+
 const GoogleCloudIcon = () => (
     <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg">
         <path d="M22.38 10.94h-2.12v-.03h-3.41v.03H12V8.46h6.85c-.93-2.58-3.4-4.52-6.52-4.52-3.8 0-6.88 3.12-6.88 6.96 0 3.84 3.08 6.96 6.88 6.96 2.05 0 3.9-.92 5.15-2.39l1.83 1.85c-1.8 1.83-4.27 2.97-6.98 2.97-5.32 0-9.64-4.36-9.64-9.75S7.01 1.25 12.33 1.25c4.77 0 8.74 3.47 9.53 8.04l.52 1.65z" />
@@ -100,7 +106,7 @@ const CERTIFICATIONS = [
         title: "Introduction to using python",
         organization: "MyCaptain",
         issueDate: "Feb 2025",
-        year: "2023",
+        year: "2025",
         logo: <MyCaptainIcon />,
         color: "#F92672",
         image: "https://drive.google.com/file/d/1-FrWI8-pOdEeMCBFRAH_89xCfWE5qMqE/view  ",
@@ -109,17 +115,17 @@ const CERTIFICATIONS = [
         link: "https://drive.google.com/file/d/1-CYBWBqxfVIZf17LjrQLwtp26_cQL_jA/view"
     },
     {
-        id: "cert-meta",
-        title: "Meta Front-End Developer",
-        organization: "Meta",
-        issueDate: "Aug 2023",
-        year: "2023",
-        logo: <MetaIcon />,
-        color: "#0668E1",
-        image: "https://placehold.co/600x400/121216/0668E1?text=Meta+Certificate",
-        description: "Professional certification covering advanced React, UI/UX principles, and robust front-end architecture.",
-        credentialId: "META-345678",
-        link: "#"
+        id: "cert-thapar",
+        title: "Winner - Hacktech National Level Hackathon",
+        organization: "Thapar Institute of Engineering and Technology",
+        issueDate: "March 2025",
+        year: "2025",
+        logo: <ThaparIcon />,
+        color: "#8B0000",
+        image: "https://drive.google.com/file/d/10_0vLlUDpl-L3fYhLorlW-iiq_Rhsl90/view",
+        description: "Awarded for developing an innovative solution at Hacktech, demonstrating technical excellence and problem-solving skills.",
+        credentialId: "2025/HT2025/Win/03",
+        link: "https://drive.google.com/file/d/10_0vLlUDpl-L3fYhLorlW-iiq_Rhsl90/view"
     },
     {
         id: "cert-google",
