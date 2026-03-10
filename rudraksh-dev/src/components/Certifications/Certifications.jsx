@@ -92,8 +92,8 @@ const CERTIFICATIONS = [
         color: "#F44336",
         image: "https://drive.google.com/file/d/1-FrWI8-pOdEeMCBFRAH_89xCfWE5qMqE/view  ",
         description: "Comprehensive foundational course in C Programming, focusing on core concepts, algorithms, and practical application development.",
-        credentialId: "MC-789012",
-        link: "#"
+        credentialId: "1M8OA14VERN2F",
+        link: "https://drive.google.com/file/d/1-FrWI8-pOdEeMCBFRAH_89xCfWE5qMqE/view"
     },
     {
         id: "cert-ml",
