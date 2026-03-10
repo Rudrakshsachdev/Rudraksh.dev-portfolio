@@ -31,6 +31,12 @@ const MicrosoftIcon = () => (
     </svg>
 );
 
+const LetsUpgradeIcon = () => (
+    <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 18.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm2.5-6.5c-1 0-1.5 1-1.5 1.5v2h-2v-2s0-2.5 2.5-2.5 2.5 1 2.5 2c0 2-3.5 1.5-3.5 4.5h2c0-1.5 3.5-1 3.5-4.5 0-2-1.5-3.5-3.5-3.5zM12 4.5c-4.142 0-7.5 3.358-7.5 7.5s3.358 7.5 7.5 7.5 7.5-3.358 7.5-7.5-3.358-7.5-7.5-7.5z" />
+    </svg>
+);
+
 const ThaparIcon = () => (
     <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
@@ -158,6 +164,19 @@ const CERTIFICATIONS = [
         description: "This course introduces the fundamentals of Artificial Intelligence and Machine Learning, covering core concepts, algorithms, and practical application development.",
         credentialId: "MCA-567890",
         link: "https://drive.google.com/file/d/1z-acpmcNJG9b0ymzFJPkfeVajjIm4heM/view",
+    },
+    {
+        id: "cert-javascript",
+        title: "Introduction to programming using Javascript",
+        organization: "LetsUpgrade",
+        issueDate: "May 2025",
+        year: "2025",
+        logo: <LetsUpgradeIcon />,
+        color: "#F68B1F",
+        image: "https://placehold.co/600x400/121216/2496ED?text=Docker+Certificate",
+        description: "Completed a focused, fast-paced bootcamp covering essential JavaScript topics such as ES6 features, asynchronous programming, DOM scripting, and event-driven development. Developed practical skills through hands-on exercises aimed at building responsive web applications.",
+        credentialId: "LUEJSMAR1251877",
+        link: "https://drive.google.com/file/d/1tVSopYW18NNFH1THN3qO8qUHLLvPymbu/view",
     }
 ];
 
