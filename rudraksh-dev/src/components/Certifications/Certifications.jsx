@@ -25,6 +25,12 @@ const MyCaptainIcon = () => (
     </svg>
 );
 
+const MicrosoftIcon = () => (
+    <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zm12.6 0H12.6V0H24v11.4z" />
+    </svg>
+);
+
 const ThaparIcon = () => (
     <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
@@ -141,17 +147,17 @@ const CERTIFICATIONS = [
         link: "https://drive.google.com/file/d/1XSg6CzVFC4_vnJUhjaONTlLAFl0buRAF/view"
     },
     {
-        id: "cert-docker",
-        title: "Docker Certified Associate",
-        organization: "Docker",
-        issueDate: "Dec 2022",
-        year: "2022",
-        logo: <DockerIcon />,
+        id: "cert-microsoft",
+        title: "Microsoft Azure AIFundamentals",
+        organization: "Microsoft",
+        issueDate: "May 2025",
+        year: "2025",
+        logo: <MicrosoftIcon />,
         color: "#2496ED",
         image: "https://placehold.co/600x400/121216/2496ED?text=Docker+Certificate",
-        description: "Proficiency in containerization, orchestration, and deploying scalable microservices architectures.",
-        credentialId: "DCA-567890",
-        link: "#"
+        description: "This course introduces the fundamentals of Artificial Intelligence and Machine Learning, covering core concepts, algorithms, and practical application development.",
+        credentialId: "MCA-567890",
+        link: "https://drive.google.com/file/d/1z-acpmcNJG9b0ymzFJPkfeVajjIm4heM/view",
     }
 ];
 
