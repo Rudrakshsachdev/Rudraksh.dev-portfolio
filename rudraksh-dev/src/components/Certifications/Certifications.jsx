@@ -128,17 +128,17 @@ const CERTIFICATIONS = [
         link: "https://drive.google.com/file/d/10_0vLlUDpl-L3fYhLorlW-iiq_Rhsl90/view"
     },
     {
-        id: "cert-google",
-        title: "Google Cloud Data Engineer",
-        organization: "Google Cloud",
-        issueDate: "Mar 2024",
-        year: "2024",
-        logo: <GoogleCloudIcon />,
+        id: "cert-AI-ML",
+        title: "Introduction to AI & Machine Learning",
+        organization: "Mycaptain",
+        issueDate: "May 2025",
+        year: "2025",
+        logo: <MyCaptainIcon />,
         color: "#4285F4",
         image: "https://placehold.co/600x400/121216/4285F4?text=GCP+Certificate",
-        description: "Expertise in designing, building, and operationalizing data processing systems and machine learning models on GCP.",
-        credentialId: "GCP-901234",
-        link: "#"
+        description: "This course introduces the fundamentals of Artificial Intelligence and Machine Learning, covering core concepts, algorithms, and practical application development.",
+        credentialId: "M8N7JUL8E0",
+        link: "https://drive.google.com/file/d/1XSg6CzVFC4_vnJUhjaONTlLAFl0buRAF/view"
     },
     {
         id: "cert-docker",
