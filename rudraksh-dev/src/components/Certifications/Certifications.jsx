@@ -37,6 +37,13 @@ const LetsUpgradeIcon = () => (
     </svg>
 );
 
+const ScalerIcon = () => (
+    <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22 6.5h-5.5l-2.5-3.5H4v17h16.5l3.5-3.5V6.5h-2zm-1.5 10l-1 1H6V5h7l2 3h5.5v8.5z" />
+        <path d="M8 8h2v2H8V8zm0 3h2v2H8v-2zm0 3h2v2H8v-2zm3-6h5v2h-5V8zm0 3h5v2h-5v-2zm0 3h5v2h-5v-2z" />
+    </svg>
+);
+
 const ThaparIcon = () => (
     <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
@@ -177,6 +184,19 @@ const CERTIFICATIONS = [
         description: "Completed a focused, fast-paced bootcamp covering essential JavaScript topics such as ES6 features, asynchronous programming, DOM scripting, and event-driven development. Developed practical skills through hands-on exercises aimed at building responsive web applications.",
         credentialId: "LUEJSMAR1251877",
         link: "https://drive.google.com/file/d/1tVSopYW18NNFH1THN3qO8qUHLLvPymbu/view",
+    },
+    {
+        id: "cert-java",
+        title: "Java Course - Mastering the fundamentals",
+        organization: "scaler",
+        issueDate: "June 2025",
+        year: "2025",
+        logo: <ScalerIcon />,
+        color: "#F68B1F",
+        image: "https://placehold.co/600x400/121216/2496ED?text=Docker+Certificate",
+        description: "Completed the Java Course – Mastering Fundamentals by Scaler, with a focus on building a strong foundation in core Java programming. Covered key concepts including data types, control structures, functions, object-oriented programming (OOP), exception handling, and basic file operations. Gained practical experience through structured assignments and real-world coding exercises.",
+        credentialId: "LUEJSMAR1251877",
+        link: "https://drive.google.com/file/d/1oD1Qo3HskNcoPw4HWgF0U4qcgnnyP4MN/view",
     }
 ];
 
