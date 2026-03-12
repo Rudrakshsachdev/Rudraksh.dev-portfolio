@@ -37,6 +37,18 @@ const LetsUpgradeIcon = () => (
     </svg>
 );
 
+const IsroIcon = () => (
+    <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71L12 2z" />
+    </svg>
+);
+
+const AgnirvaIcon = () => (
+    <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13.13 22.19L11.5 18.36L9.87 22.19L11.5 21l1.63 1.19zM11.5 1.81L13.13 3L11.5 6.83L9.87 3L11.5 1.81zM11.5 8.17l3.25 7.66l-3.25-2.38l-3.25 2.38l3.25-7.66z" />
+    </svg>
+);
+
 const ScalerIcon = () => (
     <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg">
         <path d="M22 6.5h-5.5l-2.5-3.5H4v17h16.5l3.5-3.5V6.5h-2zm-1.5 10l-1 1H6V5h7l2 3h5.5v8.5z" />
@@ -197,6 +209,19 @@ const CERTIFICATIONS = [
         description: "Completed the Java Course – Mastering Fundamentals by Scaler, with a focus on building a strong foundation in core Java programming. Covered key concepts including data types, control structures, functions, object-oriented programming (OOP), exception handling, and basic file operations. Gained practical experience through structured assignments and real-world coding exercises.",
         credentialId: "LUEJSMAR1251877",
         link: "https://drive.google.com/file/d/1oD1Qo3HskNcoPw4HWgF0U4qcgnnyP4MN/view",
+    },
+    {
+        id: "cert-applied-ai",
+        title: "Applied Artificial Intelligence – Agnirva AI Program (Summer 2025)",
+        organization: "Agnirva AI",
+        issueDate: "July 2025",
+        year: "2025",
+        logo: <IsroIcon />,
+        color: "#F68B1F",
+        image: "https://placehold.co/600x400/121216/2496ED?text=Docker+Certificate",
+        description: "Completed an 8-week applied AI training program conducted by Agnirva.com, an ISRO-registered Space Tutor under IN-SPACe.",
+        credentialId: "LUEJSMAR1251877",
+        link: "#",
     }
 ];
 
